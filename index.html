@@ -1,0 +1,2469 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width-device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title id="pageTitle">Qazanc AZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="//libtl.com/sdk.js" data-zone="10024800" data-sdk="show_10024800"></script>
+<style>
+/* --- RƏNG DƏYİŞƏNLƏRİ (VARS) --- */
+:root {
+  /* LIGHT TEMA (Ağ/Qırmızı) - Default */
+  --bg-start: #ffffff; 
+  --bg-end: #f0f0f0;   
+  --card-bg: rgba(255, 255, 255, 0.85); 
+  --card-border: rgba(0, 0, 0, 0.1);
+  --text-light: #ffffff;
+  --text-dark: #1B1B1B;
+  --accent: #FF0000; 
+  --menu-bg: rgba(255, 255, 255, 0.15);
+  --progress-bg: rgba(0, 0, 0, 0.08);
+  --input-text: #1B1B1B; 
+  --modal-bg: rgba(255, 255, 255, 0.95); 
+
+  /* Qırmızı Gradientlər */
+  --btn-gradient-start: #FF416C; 
+  --btn-gradient-end: #FF4B2B;   
+  --btn-shadow: rgba(255, 65, 108, 0.4); 
+  --secondary-btn-gradient-start: #ffc371; 
+  --secondary-btn-gradient-end: #ff5f6d; 
+  
+  /* Bildiriş rəngləri */
+  --notification-bg: #2ecc71; /* Yaşıl */
+  --notification-text: #ffffff; 
+  
+  /* Mega Box Rəngləri */
+  --box-bg: #f39c12; /* Narıncı */
+  --box-border: #e67e22; /* Tünd Narıncı */
+  --box-text: #ffffff;
+  --box-ribbon: #e74c3c; /* Qırmızı */
+  --box-shine: rgba(255, 255, 255, 0.5);
+}
+
+/* DARK TEMA (Qara/Qırmızı) */
+body.dark-theme {
+  --bg-start: #1b1b1b; 
+  --bg-end: #252525;   
+  --card-bg: rgba(45, 45, 45, 0.95); 
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-light: #ffffff;
+  --text-dark: #f0f0f0;
+  --accent: #FF4B2B; 
+  --menu-bg: rgba(0, 0, 0, 0.3);
+  --progress-bg: rgba(255, 255, 255, 0.15);
+  --input-text: #ffffff; 
+  --modal-bg: rgba(30, 30, 30, 0.95); 
+  --notification-bg: #27ae60; 
+  
+  /* Mega Box Dark Rəngləri */
+  --box-bg: #d35400; /* Tünd Narıncı */
+  --box-border: #e67e22; 
+  --box-ribbon: #c0392b; 
+}
+
+/* --- ÜMUMİ STİLLƏR --- */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,var(--bg-start),var(--bg-end));
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  color:var(--text-dark);
+  min-height:100vh;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  transition: background-color 0.5s, color 0.5s; 
+  padding-bottom: 80px; /* Menyu üçün yer */
+}
+@keyframes bgMove{
+  0%{background-position:0% 50;}
+  50%{background-position:100% 50;}
+  100%{background-position:0% 50;}
+}
+
+.container{max-width:480px;margin:auto;padding:20px;padding-top:20px;} 
+
+/* DİL VƏ TEMA SEÇİMİ */
+.top-controls {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.username-navbar-display {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 14px; 
+    margin-right: 10px;
+    opacity: 0.9;
+    transition: color 0.3s;
+}
+.username-navbar-display .icon {
+    font-size: 16px;
+    color: var(--accent);
+    margin-right: 5px;
+}
+.username-navbar-display span {
+    color: var(--accent);
+}
+
+.right-controls {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    margin-left: auto; 
+}
+
+/* DİL VƏ TEMA Düymələrinin ÜMUMİ Stili */
+.lang-switcher-container {
+    position: relative;
+}
+.lang-current-btn, .theme-toggle-btn {
+    padding: 6px 10px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text-dark);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    height: 40px; 
+}
+.lang-current-btn span {
+    margin-right: 5px; 
+}
+.lang-current-btn:hover, .theme-toggle-btn:hover {
+    box-shadow: 0 4px 15px rgba(255,0,0,0.2);
+}
+
+.theme-icon {
+    font-size: 20px;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    margin-top: 5px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 10;
+    min-width: 60px;
+    display: none;
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+}
+.lang-dropdown.show {
+    display: block;
+}
+.lang-dropdown button {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    background: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: center; 
+    cursor: pointer;
+    transition: background 0.2s;
+    display: block; 
+}
+
+.lang-dropdown button:hover, .lang-dropdown button.active {
+    background: var(--accent);
+    color: var(--text-light);
+}
+
+.page{display:none;animation:fadeIn .4s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* Balans və Kart Dizaynı */
+.balance-card, .ad-card, .task-card, .referral-card, .market-card{
+  background:var(--card-bg);
+  border-radius:25px;
+  padding:20px 18px;
+  margin-bottom:20px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.25);
+  backdrop-filter:blur(14px);
+  text-align:center;
+  border:1px solid var(--card-border);
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+.balance-card h3{font-size:16px;color:var(--accent);margin-bottom:8px;letter-spacing:0.5px;}
+.balance-card .amount{font-size:32px;font-weight:700;margin-top:5px;color:var(--text-dark);text-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.balance-card .usd{font-size:14px;color:var(--text-dark);opacity:0.7;margin-top:4px;}
+
+/* Market Kartı Stili */
+.market-card {
+    text-align: center;
+}
+.market-card h2 {
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+
+/* Mega Box Stili */
+.mega-box-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#megaBox {
+    position: relative;
+    width: 120px; 
+    height: 120px;
+    margin: 15px auto;
+    background: var(--box-bg);
+    border: 3px solid var(--box-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+#megaBox:before {
+    content: '🎁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+/* Qutu Açıq Vəziyyətdə */
+#megaBox.opened {
+    background: var(--accent);
+    box-shadow: 0 0 20px rgba(255, 65, 108, 0.8);
+    transform: scale(1.05);
+}
+#megaBox.opened:before {
+    content: '✨';
+    font-size: 70px;
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { filter: drop-shadow(0 0 5px var(--box-shine)) brightness(1.2); }
+    50% { filter: drop-shadow(0 0 10px var(--box-shine)) brightness(1.5); }
+}
+
+/* Qutu məlumatı */
+.box-info {
+    font-size: 12px;
+    color: var(--text-dark);
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+.box-cost {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Aç/Yenidən yüklə düyməsi */
+#openBoxBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--secondary-btn-gradient-start), var(--secondary-btn-gradient-end)); 
+    color: var(--text-light);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 200px;
+}
+#openBoxBtn:hover:not(.disabled) {
+    box-shadow: 0 4px 15px rgba(255,95,109,0.4);
+}
+#openBoxBtn.disabled {
+    background: gray !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    opacity: 0.6;
+}
+
+#boxStatusMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    min-height: 1.2em; 
+}
+
+
+/* Metod Siyahısı */
+.method-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:12px 0;
+    justify-content:space-around;
+}
+.method{
+    flex:1 1 calc(50% - 5px); 
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(90deg,var(--btn-gradient-start),var(--btn-gradient-end)); 
+    color:var(--text-light);
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    position: relative;
+    word-break: break-word; 
+    overflow: hidden; 
+}
+.method:hover{transform:scale(1.03);box-shadow:0 0 10px rgba(0,0,0,0.2);}
+.method-logo{
+    width: 50px;       
+    height: 50px;      
+    margin-bottom: 6px;
+    border-radius: 8px; 
+    object-fit: contain; 
+    background-color: #fff;
+    padding: 4px; 
+    flex-shrink: 0; 
+}
+.method-logo.bank-logo {
+    border-radius: 6px; 
+    padding: 2px;
+}
+.method-text {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.min-withdraw-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1px 4px;
+    border-radius: 4px;
+}
+.ad-card{margin-bottom:12px;}
+.ad-card h2{font-size:18px;color:var(--text-dark);margin-bottom:6px;}
+.ad-card p{margin:4px 0;color:var(--text-dark);font-size:13px;}
+.task-card{margin-bottom:10px;}
+.task-card h2{font-size:16px;color:var(--text-dark);margin-bottom:4px;}
+.task-card p{margin:2px 0;color:var(--text-dark);font-size:12px;}
+.task-card button{width:100%;margin-top:8px;padding:10px;font-size:13px;font-weight:700;border:none;border-radius:12px;background:linear-gradient(90deg,var(--secondary-btn-gradient-start),var(--secondary-btn-gradient-end)); 
+    color:var(--text-light);cursor:pointer;transition:0.3s;}
+.task-card button:hover{transform:scale(1.03);box-shadow:0 0 20px rgba(255,95,109,0.6);}
+.task-card button.completed{background:gray !important;box-shadow:none !important;cursor:not-allowed !important;pointer-events:none !important;opacity:0.55;}
+.task-card button.waiting {
+    background: orange !important;
+    cursor: wait !important;
+    opacity: 0.8;
+}
+
+.stats{display:flex;justify-content:space-around;margin-top:12px;}
+.stat{background:var(--progress-bg);border-radius:10px;padding:10px 16px;}
+.stat span{display:block;font-size:16px;font-weight:700;color:var(--text-dark);}
+.stat label{font-size:11px;color:var(--text-dark);opacity:0.7;}
+.progress{height:10px;background:var(--progress-bg);border-radius:6px;overflow:hidden;margin-top:12px;}
+.progress-fill{height:100%;background:var(--accent);width:0%;transition:width .4s;} 
+
+/* REKLAM DÜYMƏSİ STİLİ */
+.ad-btn{
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    font-size:14px;
+    font-weight:700;
+    border:none;
+    border-radius:14px;
+    color:var(--text-light);
+    cursor:pointer;
+    transition:0.3s;
+    background:linear-gradient(90deg,var(--btn-gradient-start),var(--btn-gradient-end));
+    box-shadow:0 0 16px var(--btn-shadow);
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1; 
+}
+.ad-btn:hover:not(.waiting){transform:scale(1.03);box-shadow:0 0 20px var(--btn-shadow);}
+
+.ad-btn.waiting {
+    background: #ccc !important;
+    color: #555 !important;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    position: relative; 
+    overflow: hidden; 
+}
+.ad-btn-content {
+    position: relative;
+    z-index: 2; 
+    display: block; 
+}
+
+.timer-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%; 
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end)); 
+  z-index: 1; 
+  border-radius: 14px;
+}
+
+.ad-btn.waiting .ad-btn-content {
+    color: var(--text-light) !important; 
+}
+
+#msg {
+    margin-top: 5px; 
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 0; 
+    padding: 0;
+    line-height: 1.2;
+}
+
+#adRewardNotificationContainer {
+    position: relative; 
+    height: 0; 
+    overflow: visible; 
+}
+
+.reward-msg {
+    position: absolute;
+    top: -10px; 
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%); 
+    background: var(--notification-bg); 
+    color: var(--notification-text);
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0;
+    z-index: 100; 
+    white-space: nowrap;
+    transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.reward-msg.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); 
+}
+
+
+/* --- YENİ NAVİQASİYA PANELİ DİZAYNI --- */
+.menu{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:450px; 
+    display:flex;
+    justify-content:space-between;
+    background:var(--menu-bg);
+    padding:8px 6px; 
+    border-radius:22px;
+    box-shadow:0 6px 20px rgba(0,0,0,.3);
+    backdrop-filter:blur(8px);
+    z-index: 999;
+}
+.menu button{
+    flex:1;
+    margin:0 4px; 
+    padding: 6px 2px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(90deg,var(--btn-gradient-start),var(--btn-gradient-end));
+    color:var(--text-light);
+    cursor: pointer;
+    transition:0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60px; /* Hündürlüyü artırdıq ki, ikon və yazı sığsın */
+}
+.menu button .nav-icon {
+    font-size: 22px;
+    margin-bottom: 3px;
+    line-height: 1;
+}
+.menu button .nav-text {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.menu button.active{
+    background:linear-gradient(90deg,var(--secondary-btn-gradient-start),var(--secondary-btn-gradient-end));
+    box-shadow:0 0 18px rgba(255,95,109,0.6);
+    cursor: default; 
+    pointer-events: none; 
+    opacity: 1;
+    transform: scale(1.05);
+}
+.menu button:not(.active):hover {
+    transform: scale(1.03); 
+}
+
+
+#form{display:none;margin-top:12px;}
+#form input{
+    width:100%;
+    padding:12px;
+    margin:6px 0;
+    border-radius:12px;
+    border:1px solid var(--card-border);
+    background:var(--card-bg);
+    color:var(--input-text); 
+}
+#form input::placeholder {
+    color: var(--input-text); 
+    opacity: 0.5; 
+}
+#form button{width:100%;padding:14px;margin-top:8px;border:none;border-radius:14px;background:linear-gradient(90deg,var(--secondary-btn-gradient-start),var(--secondary-btn-gradient-end));color:var(--text-light);font-weight:700;cursor:pointer;}
+.alert{margin-top:6px;padding:10px;border-radius:10px;display:none;}
+.alert.error{background:#f8d7da;color:#842029;}
+.alert.success{background:#d1e7dd;color:#0f5132;}
+
+/* REFERRANS SƏHİFƏSİ STİLLƏRİ */
+.referral-card {
+    text-align: left;
+}
+.referral-card h2 {
+    text-align: center;
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+.referral-info {
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    background: var(--progress-bg);
+    padding: 15px;
+    border-radius: 12px;
+}
+.referral-info b {
+    color: var(--accent);
+}
+
+.referral-actions-container {
+    display: flex;
+    align-items: stretch; 
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.referral-link-display-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#referralLinkDisplay {
+    padding: 12px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-dark);
+    font-weight: 600;
+    cursor: default;
+    display: block; 
+    height: 100%; 
+}
+
+#copyRefLinkBtn, #shareRefLinkBtn {
+    padding: 12px 15px;
+    border: none;
+    color: var(--text-light);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    flex-shrink: 0; 
+    font-size: 18px; 
+    width: 50px; 
+    text-align: center;
+}
+#copyRefLinkBtn {
+    background: linear-gradient(90deg,var(--btn-gradient-start),var(--btn-gradient-end));
+    border-left: 1px solid rgba(255, 255, 255, 0.2); 
+}
+#shareRefLinkBtn {
+    background: linear-gradient(90deg, #1e90ff, #00bfff); 
+    border-left: 1px solid rgba(255, 255, 255, 0.2); 
+}
+#copyRefLinkBtn:active, #shareRefLinkBtn:active {
+    transform: scale(0.98);
+}
+
+
+#copyMessage {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #0f5132;
+    background: #d1e7dd;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+    font-weight: 600;
+}
+
+/* BAŞLANĞIC EKRAN STİLİ */
+#loadingScreen{
+    position:fixed;
+    top:0; left:0;width:100%; height:100%;
+    background:linear-gradient(135deg, var(--bg-start), #ffc8c8); 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    transition:opacity .7s ease;
+}
+.loader-box{text-align:center;animation:fadeIn .8s ease;position:relative;}
+.shine-circle{position:absolute;width:220px; height:220px;top:-70px; left:50%;transform:translateX(-50%);background:radial-gradient(circle, rgba(255,0,0,0.35), transparent 80%);filter:blur(40px);animation:pulse 3s infinite ease-in-out;}
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+.loader-title{font-size:40px;font-weight:900;color:#FF4B2B; letter-spacing:2px;text-shadow:0 0 12px #ff416c, 0 0 35px rgba(255,75,43,0.9);margin-bottom:32px;}
+.loader-bar{width:300px;height:16px;border-radius:20px;background:rgba(255,0,0,0.15);overflow:hidden;position:relative;box-shadow:0 0 14px rgba(255,0,0,0.3);}
+.loader-fill{height:100%;width:0%;border-radius:20px;background:linear-gradient(90deg,#ff416c,#FF4B2B); animation:fillAnim 3s forwards ease-in-out;}
+@keyframes fillAnim{from{width:0%;}to{width:100%;}}
+.glow{position:absolute;top:0; left:0;width:100%; height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.9),transparent);animation:shine 1.6s infinite;}
+@keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.loader-text{margin-top:14px;font-size:17px;color:#FF4B2B;letter-spacing:1px;animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+/* TAPŞIRIQ BİLDİRİŞİ ANİMASİYASI */
+#taskNotification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -100px); 
+    background: var(--notification-bg);
+    color: var(--notification-text);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    font-size: 16px;
+    opacity: 0;
+    z-index: 10000;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+.notification-show {
+    opacity: 1 !important;
+    transform: translate(-50%, 0) !important; 
+}
+.notification-hide {
+    opacity: 0;
+    transform: translate(-50%, -100px); 
+}
+
+/* İstifadəçi Adı Modalı */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background: var(--modal-bg);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: var(--text-dark);
+    transition: background-color 0.5s;
+}
+.modal-content h3 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.input-group span {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--progress-bg);
+}
+.input-group input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px;
+    background: transparent;
+    color: var(--input-text);
+    font-size: 16px;
+    outline: none;
+}
+.modal-error {
+    color: #FF4B2B;
+    margin-bottom: 10px;
+    font-size: 14px;
+    height: 1.2em;
+}
+.modal-content button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
+    color: var(--text-light);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.modal-content button:active {
+    transform: scale(0.98);
+}
+
+</style>
+</head>
+<body id="body">
+<div id="loadingScreen">
+  <div class="loader-box">
+    <div class="shine-circle"></div>
+    <div class="loader-title">Qazanc AZ</div>
+    <div class="loader-bar">
+      <div class="loader-fill"></div>
+      <div class="glow"></div>
+    </div>
+    <div class="loader-text" data-translate-key="loading">Yüklənir...</div>
+  </div>
+</div>
+
+<div id="taskNotification" class="notification-hide">
+    <span id="taskNotificationText"></span>
+</div>
+
+<div class="modal-overlay" id="usernameModal">
+    <div class="modal-content">
+        <h3 data-translate-key="usernameTitle">İstifadəçi Adı Qeydiyyatı</h3>
+        <p style="margin-bottom: 15px; font-size: 14px;" data-translate-key="usernameInfo">Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan, 5-15 simvol) daxil edin.</p>
+        
+        <div class="input-group">
+            <span>@</span>
+            <input id="usernameInput" type="text" placeholder="username" maxlength="15"> </div>
+        
+        <div class="modal-error" id="usernameError"></div>
+        
+        <button id="saveUsernameBtn" data-translate-key="saveUsername">Yadda Saxla</button>
+    </div>
+</div>
+<div class="container">
+  
+  <div class="top-controls">
+    <div class="username-navbar-display" id="usernameNavbarDisplay" style="display:none;">
+        <span class="icon">👤</span><span id="activeUsernameNavbar"></span>
+    </div>
+
+    <div class="right-controls">
+        <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <span id="themeIcon" class="theme-icon">🔆</span>
+        </button>
+        
+        <div class="lang-switcher-container">
+            <button class="lang-current-btn" onclick="toggleDropdown()">
+                <span id="currentLangDisplay">AZ</span>
+                <span id="langArrow"></span>
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+                <button onclick="setLang('az')" id="langAzBtn">AZ</button>
+                <button onclick="setLang('en')" id="langEnBtn">EN</button>
+                <button onclick="setLang('tr')" id="langTrBtn">TR</button>
+                <button onclick="setLang('ru')" id="langRuBtn">RU</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div id="adsPage" class="page active">
+    <div class="balance-card">
+      <h3 data-translate-key="currentBalance">Balans</h3>
+      <div class="amount"><span id="balance">0.0000</span> <span id="currencySymbol">₼</span></div>
+      <div class="usd"><span id="secondaryCurrencySymbol">$</span><span id="secondaryBalance">0.0000</span> <span id="secondaryCurrencyText">USD</span></div>
+    </div>
+    
+    <div id="adRewardNotificationContainer"></div> 
+    <div class="ad-card" style="margin-bottom: 20px;"> <h2 data-translate-key="dailyAds">Günlük Reklamlar</h2>
+      <p data-translate-key="adReward">Hər reklama görə <b>0.001 ₼</b> qazanın</p>
+      <div class="stats">
+        <div class="stat"><span id="adsCount">0</span><label data-translate-key="watched">İzlənən</label></div>
+        <div class="stat"><span data-translate-key="maxCount">100</span><label data-translate-key="maximum">Maksimum</label></div>
+      </div>
+      <div class="progress"><div class="progress-fill" id="progress"></div></div>
+      <p style="margin-top:6px;" data-translate-key="progressText">İrəliləyiş: <span id="progressTextSpan">0/100</span></p>
+      <button id="adBtn" class="ad-btn">
+        <span class="ad-btn-content" data-translate-key="watchAd">Reklam İzle</span>
+        </button>
+      <div id="msg"></div> </div>
+  </div>
+  
+  <div id="marketPage" class="page">
+    <div class="balance-card">
+        <h3 data-translate-key="currentBalance">Balans</h3>
+        <div class="amount"><span id="balanceMarket">0.0000</span> <span id="currencySymbolMarket">₼</span></div>
+        <div class="usd"><span id="secondaryCurrencySymbolMarket">$</span><span id="secondaryBalanceMarket">0.0000</span> <span id="secondaryCurrencyTextMarket">USD</span></div>
+    </div>
+      
+    <div class="market-card">
+      <div class="mega-box-container">
+            <h3 data-translate-key="mysteryBoxTitle" style="color:var(--text-dark); margin-bottom:15px; font-weight:700;">🎁 Mega Kutu</h3>
+            
+            <div id="megaBox"></div>
+            
+            <p class="box-info" data-translate-key="mysteryBoxCost">Qiymət: <span id="boxCostDisplay" class="box-cost">0.5 ₼</span></p>
+            <button id="openBoxBtn" data-translate-key="openBox">Aç</button>
+            <div id="boxStatusMessage"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tasksPage" class="page">
+    <div class="task-card">
+      <h2 data-translate-key="premiumTask">Premium Tapşırıq</h2>
+      <p data-translate-key="taskReward1">Kanala qoşul və <b>0.1 ₼</b> qazan!</p>
+      <button id="joinBtn" data-translate-key="joinChannel">Kanala Qoşul</button>
+    </div>
+    <div class="task-card">
+      <h2 data-translate-key="bonusTask">Bonus Tapşırıq</h2>
+      <p data-translate-key="taskReward2">Qrupa qoşul və <b>0.1 ₼</b> qazan!</p>
+      <button id="joinBtn2" data-translate-key="joinGroup">Qrupa Qoşul</button>
+    </div>
+    <div class="task-card">
+      <h2 data-translate-key="bonusTask">Bonus Tapşırıq</h2>
+      <p data-translate-key="taskReward3">Kanala qoşul və <b>0.15 ₼</b> qazan!</p>
+      <button id="joinBtn3" data-translate-key="joinChannel">Kanala Qoşul</button>
+    </div>
+    <div class="task-card">
+      <h2 data-translate-key="sponsorTask">Sponsor Tapşırıq</h2>
+      <p data-translate-key="taskReward4">Kanala qoşul və <b>0.05 ₼</b> qazan!</p>
+      <button id="joinBtn4" data-translate-key="joinChannel">Kanala Qoşul</button>
+    </div>
+  </div>
+  
+  <div id="referralPage" class="page">
+    <div class="referral-card">
+        <h2 data-translate-key="referralTitle">Referans</h2>
+        <div class="referral-info">
+            <p data-translate-key="referralInfo1">
+                <span style="font-size:16px; font-weight:700; color:var(--accent);">⭐ Qeyd:</span> Referans ödülü yoxdur.
+            </p>
+            <p data-translate-key="referralInfo2">
+                Çıxarış etdiyinizdə linkinizdən bota qatılan istifadəçilərə baxılacaq.
+                Pulunuz **Bonuslu** olaraq göndəriləcək.
+            </p>
+        </div>
+        
+        <h3 style="font-size:16px; margin-bottom:10px; color:var(--text-dark);" data-translate-key="yourRefLink">Referans Linkiniz</h3>
+        <div class="referral-actions-container">
+            <div class="referral-link-display-wrapper">
+                <span id="referralLinkDisplay" data-ref-base="https://t.me/qazancazbot?startapp=" data-ref-code="1234567890"></span>
+            </div>
+            
+            <button id="copyRefLinkBtn" data-translate-key="copy">📋</button>
+            <button id="shareRefLinkBtn" data-translate-key="share">📤</button> 
+        </div>
+        <div id="copyMessage" data-translate-key="copied">Kopyalandı!</div>
+    </div>
+  </div>
+
+  <div id="walletPage" class="page">
+    <div class="balance-card">
+      <h3 data-translate-key="withdrawBalance">Balans</h3>
+      <div class="amount"><span id="balance2">0.0000</span> <span id="currencySymbol2">₼</span></div>
+      <div class="usd"><span id="secondaryCurrencySymbol2">$</span><span id="secondaryBalance2">0.0000</span> <span id="secondaryCurrencyText2">USD</span></div>
+    </div>
+    <h2 style="text-align:center;margin-bottom:12px;color:var(--text-dark);" data-translate-key="withdrawTitle">Çıxarış</h2>
+    <div class="method-list" id="methods">
+      
+      <div class="method" data-type="m10">
+          <img src="https://i.postimg.cc/Kj94hVNG/unnamed.png" alt="M10 Logo" class="method-logo">
+          <span class="method-text">M10</span>
+          <span class="min-withdraw-label" data-min-key="m10">4 ₼</span>
+      </div>
+      <div class="method" data-type="azercell">
+          <img src="https://i.postimg.cc/qM5gmPqZ/applogo512.png" alt="Azercell Logo" class="method-logo">
+          <span class="method-text">Azercell</span>
+          <span class="min-withdraw-label" data-min-key="azercell">4 ₼</span>
+      </div>
+      <div class="method" data-type="bakcell">
+          <img src="https://i.postimg.cc/Pqmx5N49/images.jpg" alt="Bakcell Logo" class="method-logo">
+          <span class="method-text">Bakcell</span>
+          <span class="min-withdraw-label" data-min-key="bakcell">4 ₼</span>
+      </div>
+      <div class="method" data-type="nar">
+          <img src="https://i.postimg.cc/4NmxhWPy/images.png" alt="Nar Logo" class="method-logo">
+          <span class="method-text">Nar</span>
+          <span class="min-withdraw-label" data-min-key="nar">4 ₼</span>
+      </div>
+      <div class="method" data-type="bank">
+          <img src="https://i.postimg.cc/L6H0yWwZ/42492-bank-1024.png" alt="Bank Logo" class="method-logo bank-logo">
+          <span class="method-text" data-translate-key="bankCard">Bank</span>
+          <span class="min-withdraw-label" data-min-key="bank">4 ₼</span>
+      </div>
+      <div class="method" data-type="usdt">
+          <img src="https://i.postimg.cc/X7HxsY98/Tether-USDT-Logo.png" alt="USDT Logo" class="method-logo">
+          <span class="method-text">USDT</span>
+          <span class="min-withdraw-label" data-min-key="usdt">4 ₼</span>
+      </div>
+    </div>
+    <div class="form" id="form">
+      <button id="backBtn" style="background:none;border:none;color:var(--accent);font-weight:700;">⬅ <span data-translate-key="back">Geri</span></button>
+      <input id="details" placeholder="">
+      <input id="amount" type="number" placeholder="Məbləğ">
+      <button id="withdrawBtn" data-translate-key="withdraw">Çıxarış Et</button>
+      <div id="alert" class="alert"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="menu">
+  <button onclick="showPage('adsPage',this)" class="active" data-page-id="adsPage">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-text" data-translate-key="home">Ev</span>
+  </button>
+  <button onclick="showPage('marketPage',this)" data-page-id="marketPage">
+    <span class="nav-icon">🛒</span>
+    <span class="nav-text" data-translate-key="market">Market</span>
+  </button>
+  <button onclick="showPage('tasksPage',this)" data-page-id="tasksPage">
+    <span class="nav-icon">📝</span>
+    <span class="nav-text" data-translate-key="tasks">Görevler</span>
+  </button>
+  <button onclick="showPage('referralPage',this)" data-page-id="referralPage">
+    <span class="nav-icon">👥</span>
+    <span class="nav-text" data-translate-key="referral">Referans</span>
+  </button>
+  <button onclick="showPage('walletPage',this)" data-page-id="walletPage">
+    <span class="nav-icon">💼</span>
+    <span class="nav-text" data-translate-key="wallet">Cüzdan</span>
+  </button>
+</div>
+
+<script>
+// --- YERLİ SAXLAMA KÖMƏKÇİLƏRİ ---
+function safeGet(k,d=0){try{return JSON.parse(localStorage.getItem(k))??d;}catch{return d;}}
+function safeSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function safeRemove(k){try{localStorage.removeItem(k);}catch(e){}}
+
+// 10 rəqəmli Referans Kodu yaradır (hər bir istifadəçi üçün fərqli olmalıdır)
+function generateRefCode(){
+    let code = safeGet('refCode', null);
+    if (!code) {
+        code = Math.floor(1000000000 + Math.random() * 9000000000).toString();
+        safeSet('refCode', code);
+    }
+    return code;
+}
+
+// --- TEMA İDARƏETMƏSİ ---
+const THEME_KEY = 'theme';
+const body = document.getElementById('body');
+const themeIcon = document.getElementById('themeIcon');
+
+function applyTheme(isDark) {
+    if (isDark) {
+        body.classList.add('dark-theme');
+        themeIcon.textContent = '🌙'; 
+        safeSet(THEME_KEY, 'dark');
+    } else {
+        body.classList.remove('dark-theme');
+        themeIcon.textContent = '🔆'; 
+        safeSet(THEME_KEY, 'light');
+    }
+}
+
+function toggleTheme() {
+    const isDark = body.classList.contains('dark-theme');
+    applyTheme(!isDark);
+}
+
+// Səhifə yüklənəndə temani tətbiq et
+const savedTheme = safeGet(THEME_KEY, 'light');
+applyTheme(savedTheme === 'dark');
+
+
+// --- VALYUTA VƏ MƏZƏNNƏLƏR ---
+const EXCHANGE_RATES = {
+    AZN_TO_USD: 0.59, 
+    AZN_TO_TRY: 25.00,  
+    AZN_TO_RUB: 46.45 
+};
+const CURRENCIES = {
+    'az': { main: 'AZN', symbol: '₼', secondary: 'USD', secondarySymbol: '$' },
+    'tr': { main: 'TRY', symbol: '₺', secondary: 'USD', secondarySymbol: '$' },
+    'en': { main: 'USD', symbol: '$', secondary: 'RUB', secondarySymbol: '₽' }, 
+    'ru': { main: 'RUB', symbol: '₽', secondary: 'USD', secondarySymbol: '$' }
+};
+
+const AZN_REWARD = 0.001; 
+const AZN_TASK_REWARDS = [0.1, 0.1, 0.15, 0.05]; 
+const TOTAL_TASKS_COUNT = AZN_TASK_REWARDS.length; 
+
+const AZN_MIN_WITHDRAW = { m10: 4, azercell: 4, bakcell: 4, nar: 4, bank: 4, usdt: 4 }; 
+
+// YENİ: Mega Box Dəyişənləri
+const BOX_COST_AZN = 0.50;
+const BOX_REWARDS_AZN = [0.05, 0.05, 0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 0.25]; // Mükafat ehtimalları
+
+// --- İSTİFADƏÇİ ADI AÇARI ---
+const USERNAME_KEY = 'az_username';
+const USERNAME_MIN_LENGTH = 5;
+const USERNAME_MAX_LENGTH = 15;
+
+// --- YERLİ SAXLAMA AÇARLARI ---
+const BAL_KEY='bal',COUNT_KEY='cnt',RESET_KEY='resetTime';
+const JOIN_KEY='joined',JOIN_KEY2='joined2',JOIN_KEY3='joined3',JOIN_KEY4='joined4'; 
+const TOTAL_ADS_KEY = 'totalAdsWatched';
+const TOTAL_EARNED_KEY = 'totalAZNEarned';
+const REWARD_MSG_KEY = 'rewardMsgExpire'; 
+
+
+// --- TƏRCÜMƏ MƏLUMATLARI (DİL SÖZLÜYÜ) ---
+
+function localizeAmount(aznAmount, lang) {
+    const rates = EXCHANGE_RATES;
+    const currencyInfo = CURRENCIES[lang];
+    let amount = aznAmount;
+    let format = (val) => val.toFixed(4); // Default AZN
+    
+    if (lang === 'tr') {
+        amount = aznAmount * rates.AZN_TO_TRY;
+        format = (val) => val.toFixed(2); 
+    } else if (lang === 'en') {
+        amount = aznAmount * rates.AZN_TO_USD;
+        format = (val) => val.toFixed(4); 
+    } else if (lang === 'ru') {
+        amount = aznAmount * rates.AZN_TO_RUB;
+        format = (val) => val.toFixed(2); 
+    }
+    
+    return {
+        amount: amount,
+        formatted: format(amount),
+        symbol: currencyInfo.symbol
+    };
+}
+
+function getLocalizedReward(lang) {
+    const info = localizeAmount(AZN_REWARD, lang);
+    return {
+        reward: info.amount,
+        formattedReward: info.formatted,
+        symbol: info.symbol,
+        currency: CURRENCIES[lang].main
+    };
+}
+
+function getLocalizedTaskReward(lang, aznReward) {
+    const info = localizeAmount(aznReward, lang);
+    return `<b>${info.formatted} ${info.symbol}</b>`;
+}
+
+function getLocalizedMinAmount(methodType, lang) {
+    const currencyInfo = CURRENCIES[lang];
+    let symbol = currencyInfo.symbol;
+    let formattedAmount;
+    
+    // Hədəf dəyərlər
+    if (lang === 'az') {
+        formattedAmount = '4';
+        symbol = '₼';
+    } else if (lang === 'en') {
+        formattedAmount = '2.40'; 
+        symbol = '$';
+    } else if (lang === 'tr') {
+        formattedAmount = '100';
+        symbol = '₺';
+    } else if (lang === 'ru') {
+        formattedAmount = '188';
+        symbol = '₽';
+    } else {
+        formattedAmount = '4';
+        symbol = '₼';
+    }
+    
+    return `${formattedAmount} ${symbol}`;
+}
+
+function getAZNEquivalentMinWithdrawal(lang) {
+    if (lang === 'en') {
+        return 2.40 / EXCHANGE_RATES.AZN_TO_USD; 
+    } else if (lang === 'tr') {
+        return 100 / EXCHANGE_RATES.AZN_TO_TRY;
+    } else if (lang === 'ru') {
+        return 188 / EXCHANGE_RATES.AZN_TO_RUB;
+    } else { // AZ
+        return 4.0; 
+    }
+}
+
+const TRANSLATIONS = {
+    'az': {
+        pageTitle: 'Qazanc AZ',
+        loading: 'Yüklənir...',
+        market: 'Market', 
+        currentBalance: 'Balans',
+        withdrawBalance: 'Balans',
+        dailyAds: 'Günlük Reklamlar',
+        adReward: (r) => `Hər reklama görə ${r} qazanın`, 
+        watched: 'İzlənən',
+        maximum: 'Maksimum',
+        maxCount: '100',
+        progressText: 'İrəliləyiş: ',
+        watchAd: 'Reklam İzle',
+        adLimitReached: '📣 Gündəlik limitə çatdınız!',
+        watching: 'İzlənir...',
+        rewardAddedConfirmed: (r) => `✅ ${r} əlavə olundu!`, 
+        wait: '⏳ {s}s gözləyin',
+        premiumTask: 'Premium Tapşırıq',
+        bonusTask: 'Bonus Tapşırıq',
+        sponsorTask: 'Sponsor Tapşırıq',
+        taskReward1: (r) => `Kanala qoşul və ${r} qazan!`,
+        taskReward2: (r) => `Qrupa qoşul və ${r} qazan!`,
+        taskReward3: (r) => `Kanala qoşul və ${r} qazan!`,
+        taskReward4: (r) => `Kanala qoşul və ${r} qazan!`,
+        joinChannel: 'Kanala Qoşul',
+        joinGroup: 'Qrupa Qoşul',
+        withdrawTitle: 'Çıxarış',
+        bankCard: 'Bank Kartı',
+        back: 'Geri',
+        withdraw: 'Çıxarış Et',
+        methodError: 'Metod seçin',
+        detailsError: 'Detalları daxil edin',
+        amountError: 'Məbləği düzgün daxil edin',
+        minAmount: (min) => `Minimum məbləğ ${min}`, 
+        balanceError: 'Balans kifayət etmir',
+        withdrawSuccess: '✅ Çıxarış göndərildi! 48 saat ərzində yerinə yetiriləcək.',
+        home: 'Ev',
+        tasks: 'Görevler',
+        referral: 'Referans',
+        wallet: 'Cüzdan',
+        referralTitle: 'Referans',
+        referralInfo1: '⭐ Qeyd: Referans ödülü yoxdur.',
+        referralInfo2: 'Çıxarış etdiyinizdə linkinizdən bota qatılan istifadəçilərə baxılacaq. Pulunuz **Bonuslu** olaraq göndəriləcək.',
+        yourRefLink: 'Referans Linkiniz',
+        copy: 'Kopyala',
+        copied: 'Kopyalandı!',
+        copyFailed: 'Kopyalama uğursuz oldu!',
+        placeholderDetails_m10: '10 rəqəmli nömrə',
+        placeholderDetails_azercell: '050xxxxxxx',
+        placeholderDetails_bakcell: '055xxxxxxx',
+        placeholderDetails_nar: '070xxxxxxx',
+        placeholderDetails_bank: '16 rəqəmli kart nömrəsi',
+        placeholderDetails_usdt: 'TON adresi',
+        placeholderAmount: 'Məbləğ',
+        completed: 'Tamamlandı', 
+        taskSuccess: (r) => `✅ Tapşırıq tamamlandı! ${r} əlavə olundu.`,
+        usernameTitle: 'İstifadəçi Adı Qeydiyyatı',
+        usernameInfo: `Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} simvol) daxil edin.`,
+        saveUsername: 'Yadda Saxla',
+        usernameTooShort: `İstifadəçi adı minimum ${USERNAME_MIN_LENGTH} simvol olmalıdır!`,
+        usernameTooLong: `İstifadəçi adı maksimum ${USERNAME_MAX_LENGTH} simvol olmalıdır!`,
+        usernameInvalid: "İstifadəçi adı yalnız hərflər, rəqəmlər və '_' ibarət olmalıdır. (@-siz daxil edin)",
+        usernameSaved: '✅ İstifadəçi adı qeyd edildi!',
+        activeUsernameTitle: 'Aktiv İstifadəçi Adınız',
+        yourUsernameTitle: 'İstifadəçi Adınız',
+        share: 'Paylaş', 
+        shareMessage: (link) => `Mən Qazanc AZ ilə reklam izləyərək qazanıram 💰\nSən də mənim linkimdən qoşul 🔗\n${link}\nReklam izləyərək birlikdə qazanaq 📲💸\nFürsəti qaçırma, indi başla! 🔥🚀`,
+        mysteryBoxTitle: '🎁 Mega Kutu',
+        mysteryBoxCost: (c) => `Qiymət: ${c}`,
+        openBox: 'Aç',
+        costDeducted: (c) => `💰 Balansınızdan ${c} çıxıldı. Qutu açılır...`,
+        boxOpened: (r) => `🎉 Təbrik edirik! ${r} qazandınız!`,
+        boxBalanceError: (c) => `Balansınızda qutunu açmaq üçün ${c} yoxdur.`,
+    },
+    'en': {
+        pageTitle: 'Earn AZ',
+        loading: 'Loading...',
+        market: 'Shop',
+        currentBalance: 'Balance',
+        withdrawBalance: 'Balance',
+        dailyAds: 'Daily Ads',
+        adReward: (r) => `Earn ${r} for each ad`, 
+        watched: 'Watched',
+        maximum: 'Maximum',
+        maxCount: '100',
+        progressText: 'Progress: ',
+        watchAd: 'Watch Ad',
+        adLimitReached: '📣 Daily limit reached!',
+        watching: 'Watching...',
+        rewardAddedConfirmed: (r) => `✅ ${r} added!`, 
+        wait: '⏳ {s}s wait',
+        premiumTask: 'Premium Task',
+        bonusTask: 'Bonus Task',
+        sponsorTask: 'Sponsor Task',
+        taskReward1: (r) => `Join channel and earn ${r}!`,
+        taskReward2: (r) => `Join group and earn ${r}!`,
+        taskReward3: (r) => `Join channel and earn ${r}!`,
+        taskReward4: (r) => `Join channel and earn ${r}!`,
+        joinChannel: 'Join Channel',
+        joinGroup: 'Join Group',
+        withdrawTitle: 'Withdrawal',
+        bankCard: 'Bank Card',
+        back: 'Back',
+        withdraw: 'Withdraw',
+        methodError: 'Select a method',
+        detailsError: 'Enter details',
+        amountError: 'Enter correct amount',
+        minAmount: (min) => `Minimum amount ${min}`,
+        balanceError: 'Insufficient balance',
+        withdrawSuccess: '✅ Withdrawal sent! It will be executed within 48 hours.',
+        home: 'Home',
+        tasks: 'Tasks',
+        referral: 'Referral',
+        wallet: 'Wallet',
+        referralTitle: 'Referral',
+        referralInfo1: '⭐ Note: There is no referral reward.',
+        referralInfo2: 'When you withdraw, users who joined the bot through your link will be checked. Your money will be sent as a **Bonus**.',
+        yourRefLink: 'Your Referral Link',
+        copy: 'Copy',
+        copied: 'Copied!', 
+        copyFailed: 'Copy failed!', 
+        placeholderDetails_m10: '10 digit M10 number',
+        placeholderDetails_azercell: '050xxxxxxx',
+        placeholderDetails_bakcell: '055xxxxxxx',
+        placeholderDetails_nar: '070xxxxxxx',
+        placeholderDetails_bank: '16 digit card number',
+        placeholderDetails_usdt: 'TON address',
+        placeholderAmount: 'Amount',
+        completed: 'Completed', 
+        taskSuccess: (r) => `✅ Task completed! ${r} added.`, 
+        usernameTitle: 'Username Registration',
+        usernameInfo: `Please enter your Telegram username (without @, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} chars) to continue.`,
+        saveUsername: 'Save',
+        usernameTooShort: `Username must be at least ${USERNAME_MIN_LENGTH} characters!`,
+        usernameTooLong: `Username must be maximum ${USERNAME_MAX_LENGTH} characters!`,
+        usernameInvalid: "Username must contain only letters, numbers and '_'. (Enter without @)",
+        usernameSaved: '✅ Username saved!',
+        activeUsernameTitle: 'Active Username',
+        yourUsernameTitle: 'Your Username',
+        share: 'Share',
+        shareMessage: (link) => `I earn by watching ads with Qazanc AZ 💰\nJoin with my link 🔗\n${link}\nLet's earn together by watching ads 📲💸\nDon't miss the chance, start now! 🔥🚀`,
+        mysteryBoxTitle: '🎁 Mega Box',
+        mysteryBoxCost: (c) => `Cost: ${c}`,
+        openBox: 'Open',
+        costDeducted: (c) => `💰 ${c} deducted from your balance. Box is opening...`,
+        boxOpened: (r) => `🎉 Congratulations! You won ${r}!`,
+        boxBalanceError: (c) => `You do not have ${c} to open the box.`,
+    },
+    'tr': {
+        pageTitle: 'Kazan AZ',
+        loading: 'Yükleniyor...',
+        market: 'Mağaza', 
+        currentBalance: 'Bakiye',
+        withdrawBalance: 'Bakiye',
+        dailyAds: 'Günlük Reklamlar',
+        adReward: (r) => `Her reklam için ${r} kazanın`, 
+        watched: 'İzlenen',
+        maximum: 'Maksimum',
+        maxCount: '100',
+        progressText: 'İlerleme: ',
+        watchAd: 'Reklam İzle',
+        adLimitReached: '📣 Günlük sınıra ulaştınız!',
+        watching: 'İzleniyor...',
+        rewardAddedConfirmed: (r) => `✅ ${r} eklendi!`, 
+        wait: '⏳ {s}sn bekleyin',
+        premiumTask: 'Premium Görev',
+        bonusTask: 'Bonus Görev',
+        sponsorTask: 'Sponsor Görevi',
+        taskReward1: (r) => `Kanala katıl ve ${r} kazan!`,
+        taskReward2: (r) => `Gruba katıl ve ${r} kazan!`,
+        taskReward3: (r) => `Kanala katıl ve ${r} kazan!`,
+        taskReward4: (r) => `Kanala katıl ve ${r} kazan!`,
+        joinChannel: 'Kanala Katıl',
+        joinGroup: 'Gruba Katıl',
+        withdrawTitle: 'Para Çekme',
+        bankCard: 'Banka Kartı',
+        back: 'Geri',
+        withdraw: 'Para Çek',
+        methodError: 'Yöntem seçin',
+        detailsError: 'Bilgileri girin',
+        amountError: 'Miktarı doğru girin',
+        minAmount: (min) => `Minimum miktar ${min}`,
+        balanceError: 'Yetersiz bakiye',
+        withdrawSuccess: '✅ Çekim talebi gönderildi! 48 saat içinde tamamlanacaktır.',
+        home: 'Ana Sayfa',
+        tasks: 'Görevler',
+        referral: 'Referans',
+        wallet: 'Cüzdan',
+        referralTitle: 'Referans',
+        referralInfo1: '⭐ Not: Referans ödülü yoktur.',
+        referralInfo2: 'Para çektiğinizde, linkiniz üzerinden bota katılan kullanıcılar kontrol edilecektir. Paranız **Bonuslu** olarak gönderilecektir.',
+        yourRefLink: 'Referans Bağlantınız',
+        copy: 'Kopyala',
+        copied: 'Kopyalandı!', 
+        copyFailed: 'Kopyalama başarısız!', 
+        placeholderDetails_m10: '10 haneli M10 numarası',
+        placeholderDetails_azercell: '050xxxxxxx',
+        placeholderDetails_bakcell: '055xxxxxxx',
+        placeholderDetails_nar: '070xxxxxxx',
+        placeholderDetails_bank: '16 haneli kart numarası',
+        placeholderDetails_usdt: 'TON adresi',
+        placeholderAmount: 'Miktar',
+        completed: 'Tamamlandı', 
+        taskSuccess: (r) => `✅ Görev tamamlandı! ${r} eklendi.`, 
+        usernameTitle: 'Kullanıcı Adı Kaydı',
+        usernameInfo: `Devam etmek için Telegram kullanıcı adınızı (@ olmadan, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} karakter) giriniz.`,
+        saveUsername: 'Kaydet',
+        usernameTooShort: `Kullanıcı adı en az ${USERNAME_MIN_LENGTH} karakter olmalıdır!`,
+        usernameTooLong: `Kullanıcı adı maksimum ${USERNAME_MAX_LENGTH} karakter olmalıdır!`,
+        usernameInvalid: "Kullanıcı adı sadece harfler, rakamlar ve '_' içermelidir. (@-siz giriniz)",
+        usernameSaved: '✅ Kullanıcı adı kaydedildi!',
+        activeUsernameTitle: 'Aktif Kullanıcı Adınız',
+        yourUsernameTitle: 'Kullanıcı Adınız',
+        share: 'Paylaş',
+        shareMessage: (link) => `Qazanc AZ ile reklam izleyerek kazanıyorum 💰\nSen de benim linkimden katıl 🔗\n${link}\nReklam izleyerek birlikte kazanalım 📲💸\nFırsatı kaçırma, hemen başla! 🔥🚀`,
+        mysteryBoxTitle: '🎁 Mega Kutu',
+        mysteryBoxCost: (c) => `Ücret: ${c}`,
+        openBox: 'Aç',
+        costDeducted: (c) => `💰 Bakiyenizden ${c} düşüldü. Kutu açılıyor...`,
+        boxOpened: (r) => `🎉 Tebrikler! You won ${r}!`,
+        boxBalanceError: (c) => `Kutuyu açmak için bakiyenizde ${c} yok.`,
+    },
+    'ru': { 
+        pageTitle: 'Заработок AZ',
+        loading: 'Загрузка...',
+        market: 'Рынок', 
+        currentBalance: 'Баланс',
+        withdrawBalance: 'Баланс',
+        dailyAds: 'Ежедневная Реклама',
+        adReward: (r) => `Зарабатывайте ${r} за каждую рекламу`, 
+        watched: 'Просмотрено',
+        maximum: 'Максимум',
+        maxCount: '100',
+        progressText: 'Прогресс: ',
+        watchAd: 'Смотреть Рекламу',
+        adLimitReached: '📣 Достигнут дневной лимит!',
+        watching: 'Просмотр...',
+        rewardAddedConfirmed: (r) => `✅ ${r} добавлено!`, 
+        wait: '⏳ {s}с ожидайте',
+        premiumTask: 'Премиум Задание',
+        bonusTask: 'Бонусное Задание',
+        sponsorTask: 'Спонсорское Задание',
+        taskReward1: (r) => `Подпишитесь на канал и заработайте ${r}!`,
+        taskReward2: (r) => `Присоединитесь к группе и заработайте ${r}!`,
+        taskReward3: (r) => `Подпишитесь на канал и заработайте ${r}!`,
+        taskReward4: (r) => `Подпишитесь на канал и заработайте ${r}!`,
+        joinChannel: 'Подписаться',
+        joinGroup: 'Вступить в Группу',
+        withdrawTitle: 'Вывод Средств',
+        bankCard: 'Банковская Карта',
+        back: 'Назад',
+        withdraw: 'Вывести',
+        methodError: 'Выберите способ',
+        detailsError: 'Введите данные',
+        amountError: 'Введите правильную сумму',
+        minAmount: (min) => `Минимальная сумма ${min}`,
+        balanceError: 'Недостаточно средств',
+        withdrawSuccess: '✅ Заявка отправлена! Будет исполнена в течение 48 часов.',
+        home: 'Главная',
+        tasks: 'Задания',
+        referral: 'Рефералы',
+        wallet: 'Кошелек',
+        referralTitle: 'Рефералы',
+        referralInfo1: '⭐ Примечание: Реферального вознаграждения нет.',
+        referralInfo2: 'При выводе средств будут проверены пользователи, присоединившиеся к боту по вашей ссылке. Ваши деньги будут отправлены как **Бонус**.',
+        yourRefLink: 'Ваша Реферальная Ссылка',
+        copy: 'Копировать',
+        copied: 'Скопировано!', 
+        copyFailed: 'Сбой копирования!', 
+        placeholderDetails_m10: '10-значный номер M10',
+        placeholderDetails_azercell: '050xxxxxxx',
+        placeholderDetails_bakcell: '055xxxxxxx',
+        placeholderDetails_nar: '070xxxxxxx',
+        placeholderDetails_bank: '16-значный номер карты',
+        placeholderDetails_usdt: 'TON адрес',
+        placeholderAmount: 'Сумма',
+        completed: 'Выполнено', 
+        taskSuccess: (r) => `✅ Задание выполнено! ${r} добавлено.`,
+        usernameTitle: 'Регистрация Имени Пользователя',
+        usernameInfo: `Для продолжения введите свое имя пользователя Telegram (без @, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} символов).`,
+        saveUsername: 'Сохранить',
+        usernameTooShort: `Имя пользователя должно содержать не менее ${USERNAME_MIN_LENGTH} символов!`,
+        usernameTooLong: `Имя пользователя должно содержать не более ${USERNAME_MAX_LENGTH} символов!`,
+        usernameInvalid: "Имя пользователя должно содержать только буквы, цифры и '_'. (Введите без @)",
+        usernameSaved: '✅ Имя пользователя сохранено!',
+        activeUsernameTitle: 'Активное Имя Пользователя',
+        yourUsernameTitle: 'Ваше Имя Пользователя',
+        share: 'Поделиться',
+        shareMessage: (link) => `Я зарабатываю, просматривая рекламу с Qazanc AZ 💰\nПрисоединяйся по моей ссылке 🔗\n${link}\nДавайте зарабатывать вместе, просматривая рекламу 📲💸\nНе упусти шанс, начни прямо сейчас! 🔥🚀`,
+        mysteryBoxTitle: '🎁 Мега-Бокс',
+        mysteryBoxCost: (c) => `Стоимость: ${c}`,
+        openBox: 'Открыть',
+        costDeducted: (c) => `💰 ${c} списано с вашего баланса. Бокс открывается...`,
+        boxOpened: (r) => `🎉 Поздравляем! Вы выиграли ${r}!`,
+        boxBalanceError: (c) => `У вас нет ${c} для открытия бокса.`,
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'az';
+const USER_REF_CODE = generateRefCode(); 
+
+const LIMIT = 100;
+
+let bal = parseFloat(safeGet(BAL_KEY, -1)); 
+
+// DƏYİŞİKLİK: Başlanğıc balansı 0.50-dən 0.00-a endirildi
+if (bal === -1 || isNaN(bal)) { 
+    bal = 0.00; 
+    safeSet(BAL_KEY, bal);
+}
+
+let totalAds = parseInt(safeGet(TOTAL_ADS_KEY, 0));
+let totalEarned = parseFloat(safeGet(TOTAL_EARNED_KEY, bal)); 
+
+let cnt=parseInt(safeGet(COUNT_KEY,0));
+let resetTime=safeGet(RESET_KEY,null);
+
+let tInterval = null; 
+let remainingSeconds = 0; 
+const MAX_SECONDS = 10;
+let rewardMsgTimeout = null; 
+
+function getNextResetTime(){
+  const now=new Date();
+  const AZ_OFFSET=4;
+  let resetUTC=new Date(Date.UTC(
+    now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+    23-AZ_OFFSET,0,0,0
+  ));
+  if(now.getTime()>resetUTC.getTime()){resetUTC.setUTCDate(resetUTC.getUTCDate()+1);}
+  return resetUTC.getTime();
+}
+
+if(!resetTime||Date.now()>resetTime){
+  cnt=0;
+  resetTime=getNextResetTime();
+  safeSet(RESET_KEY,resetTime);
+  safeSet(COUNT_KEY,cnt);
+}
+
+
+function update(){
+  const lang = currentLang;
+  const rates = EXCHANGE_RATES;
+  const currencyInfo = CURRENCIES[lang];
+  
+  let mainBalance = bal;
+  let secondaryBalance = bal;
+  
+  let mainSymbol = currencyInfo.symbol;
+  let secondarySymbol = currencyInfo.secondarySymbol;
+  let secondaryText = currencyInfo.secondary;
+
+  let mainFormat = (val) => val.toFixed(4);
+  let secondaryFormat = (val) => val.toFixed(4);
+  
+  if (lang === 'tr') {
+      mainBalance = bal * rates.AZN_TO_TRY;
+      secondaryBalance = bal * rates.AZN_TO_USD;
+      mainFormat = (val) => val.toFixed(2);
+      secondaryFormat = (val) => val.toFixed(4);
+  } else if (lang === 'en') {
+      mainBalance = bal * rates.AZN_TO_USD; 
+      
+      if (currencyInfo.secondary === 'RUB') {
+          secondaryBalance = bal * rates.AZN_TO_RUB; 
+          secondaryFormat = (val) => val.toFixed(2); 
+      } else {
+          secondaryBalance = bal; 
+      }
+      
+      mainFormat = (val) => val.toFixed(4);
+
+  } else if (lang === 'ru') { 
+      mainBalance = bal * rates.AZN_TO_RUB;
+      secondaryBalance = bal * rates.AZN_TO_USD;
+      mainFormat = (val) => val.toFixed(2);
+      secondaryFormat = (val) => val.toFixed(4);
+  } else { 
+      mainBalance = bal;
+      secondaryBalance = bal * rates.AZN_TO_USD;
+  }
+  
+  document.getElementById('balance').textContent = mainFormat(mainBalance);
+  document.getElementById('balance2').textContent = mainFormat(mainBalance);
+  const balanceMarket = document.getElementById('balanceMarket');
+  if (balanceMarket) balanceMarket.textContent = mainFormat(mainBalance);
+  
+  document.getElementById('currencySymbol').textContent = mainSymbol;
+  document.getElementById('currencySymbol2').textContent = mainSymbol;
+  const currencySymbolMarket = document.getElementById('currencySymbolMarket');
+  if (currencySymbolMarket) currencySymbolMarket.textContent = mainSymbol;
+  
+  document.getElementById('secondaryBalance').textContent = secondaryFormat(secondaryBalance);
+  document.getElementById('secondaryBalance2').textContent = secondaryFormat(secondaryBalance);
+  const secondaryBalanceMarket = document.getElementById('secondaryBalanceMarket');
+  if (secondaryBalanceMarket) secondaryBalanceMarket.textContent = secondaryFormat(secondaryBalance);
+  
+  document.getElementById('secondaryCurrencySymbol').textContent = secondarySymbol;
+  document.getElementById('secondaryCurrencySymbol2').textContent = secondarySymbol;
+  const secondaryCurrencySymbolMarket = document.getElementById('secondaryCurrencySymbolMarket');
+  if (secondaryCurrencySymbolMarket) secondaryCurrencySymbolMarket.textContent = secondarySymbol;
+  
+  document.getElementById('secondaryCurrencyText').textContent = secondaryText;
+  document.getElementById('secondaryCurrencyText2').textContent = secondaryText;
+  const secondaryCurrencyTextMarket = document.getElementById('secondaryCurrencyTextMarket');
+  if (secondaryCurrencyTextMarket) secondaryCurrencyTextMarket.textContent = secondaryText;
+
+
+  document.getElementById('adsCount').textContent=cnt;
+  document.getElementById('progress').style.width=(cnt/LIMIT*100)+'%';
+  const progressTextSpan = document.getElementById('progressTextSpan');
+  if(progressTextSpan) progressTextSpan.textContent = `${cnt}/${LIMIT}`;
+  
+  safeSet(BAL_KEY,bal);
+  safeSet(COUNT_KEY,cnt);
+  safeSet(TOTAL_ADS_KEY, totalAds); 
+  safeSet(TOTAL_EARNED_KEY, totalEarned); 
+  
+  updateUsernameDisplay(); 
+  updateMegaBoxState(); 
+  
+  checkAndDisplayRewardMsg();
+}
+
+function updateUsernameDisplay() {
+    const savedUsername = safeGet(USERNAME_KEY, '');
+    const card = document.getElementById('usernameNavbarDisplay');
+    const display = document.getElementById('activeUsernameNavbar');
+
+    if (savedUsername) {
+        display.textContent = `@${savedUsername}`;
+        card.style.display = 'flex';
+    } else {
+        card.style.display = 'none';
+    }
+}
+
+const megaBox = document.getElementById('megaBox');
+const openBoxBtn = document.getElementById('openBoxBtn');
+const boxCostDisplay = document.getElementById('boxCostDisplay');
+const boxStatusMessage = document.getElementById('boxStatusMessage');
+
+function updateMegaBoxState() {
+    const t = TRANSLATIONS[currentLang];
+    const costInfo = localizeAmount(BOX_COST_AZN, currentLang);
+    
+    boxCostDisplay.textContent = `${costInfo.formatted} ${costInfo.symbol}`;
+    
+    const isUsernameSet = safeGet(USERNAME_KEY, '') !== '';
+
+    if (!isUsernameSet) {
+        openBoxBtn.classList.add('disabled');
+        openBoxBtn.disabled = true;
+        boxStatusMessage.textContent = t.usernameTitle; 
+        return;
+    }
+    
+    const balanceInfo = localizeAmount(bal, currentLang);
+    
+    const EPSILON = 0.0001; 
+    
+    if (balanceInfo.amount < costInfo.amount - EPSILON) {
+        openBoxBtn.classList.add('disabled');
+        openBoxBtn.disabled = true;
+        boxStatusMessage.textContent = t.boxBalanceError(`${costInfo.formatted} ${costInfo.symbol}`);
+        return;
+    }
+    
+    openBoxBtn.classList.remove('disabled');
+    openBoxBtn.disabled = false;
+    boxStatusMessage.textContent = ''; 
+}
+
+openBoxBtn.onclick = () => {
+    const t = TRANSLATIONS[currentLang];
+    
+    if (openBoxBtn.disabled) {
+        return;
+    }
+
+    const costInfo = localizeAmount(BOX_COST_AZN, currentLang);
+    const costInAZN = BOX_COST_AZN;
+    
+    if (bal < costInAZN - 0.0001) { 
+        boxStatusMessage.textContent = t.boxBalanceError(`${costInfo.formatted} ${costInfo.symbol}`);
+        return;
+    }
+    
+    bal -= costInAZN;
+    totalEarned -= costInAZN; 
+    safeSet(BAL_KEY, bal);
+    safeSet(TOTAL_EARNED_KEY, totalEarned);
+    
+    update(); 
+
+    openBoxBtn.classList.add('disabled');
+    openBoxBtn.disabled = true;
+    
+    boxStatusMessage.innerHTML = t.costDeducted(`${costInfo.formatted} ${costInfo.symbol}`);
+    megaBox.classList.remove('opened');
+    megaBox.style.transform = 'scale(0.95)'; 
+
+    setTimeout(() => {
+        megaBox.style.transform = 'scale(1.05)'; 
+    }, 300);
+    
+    setTimeout(() => {
+        const rewardIndex = Math.floor(Math.random() * BOX_REWARDS_AZN.length);
+        const earnedAZN = BOX_REWARDS_AZN[rewardIndex];
+        
+        bal += earnedAZN;
+        totalEarned += earnedAZN;
+        
+        safeSet(BAL_KEY, bal);
+        safeSet(TOTAL_EARNED_KEY, totalEarned);
+        
+        megaBox.classList.add('opened');
+        
+        const rewardInfo = localizeAmount(earnedAZN, currentLang);
+        const formattedRewardText = `<b>${rewardInfo.formatted} ${rewardInfo.symbol}</b>`;
+        
+        boxStatusMessage.innerHTML = t.boxOpened(formattedRewardText);
+        
+        showTaskNotification(t.boxOpened(formattedRewardText));
+        
+        update();
+        
+        setTimeout(() => {
+            megaBox.classList.remove('opened');
+            megaBox.style.transform = ''; 
+            updateMegaBoxState(); 
+        }, 2000);
+        
+    }, 1000); 
+}
+
+
+function updateTaskButtons() {
+    const t = TRANSLATIONS[currentLang];
+    
+    taskButtons.forEach((task, index) => {
+        const btn = document.getElementById(task.id);
+        if (!btn) return;
+
+        const taskRewardKey = `taskReward${index + 1}`;
+        const localizedRewardText = getLocalizedTaskReward(currentLang, AZN_TASK_REWARDS[index]);
+        const rewardEl = btn.parentElement.querySelector(`p[data-translate-key="${taskRewardKey}"]`);
+        if (rewardEl) {
+            let baseText = t[taskRewardKey] ? t[taskRewardKey]((r) => r) : '';
+            if (baseText) {
+                rewardEl.innerHTML = t[taskRewardKey](localizedRewardText);
+            }
+        }
+        
+        if (localStorage.getItem(task.key)){
+            btn.classList.remove('waiting'); 
+            btn.classList.add('completed');
+            btn.textContent = t.completed;
+            btn.disabled = true; 
+        } else {
+            if (!btn.classList.contains('waiting')) {
+                 btn.classList.remove('completed');
+                 btn.disabled = false;
+                 
+                 const key = btn.getAttribute('data-translate-key');
+                 if(t[key]) {
+                     btn.textContent = t[key];
+                 }
+            }
+        }
+    });
+}
+
+
+function setPlaceholders(methodType) {
+    const t = TRANSLATIONS[currentLang];
+    const currency = CURRENCIES[currentLang].main;
+    
+    const localizedMinAmount = getLocalizedMinAmount(methodType, currentLang); 
+    const minText = t.minAmount(localizedMinAmount);
+    
+    const detailsKey = `placeholderDetails_${methodType}`;
+    
+    details.placeholder = t[detailsKey] || '';
+    
+    const minTextOnly = localizedMinAmount.split(' ')[0]; 
+    amount.placeholder = `${t.placeholderAmount} (${currency}) - ${minTextOnly}`; 
+}
+
+function applyTranslations(lang) {
+    const t = TRANSLATIONS[lang];
+    if (!t) return;
+
+    document.getElementById('pageTitle').textContent = t.pageTitle;
+    document.getElementById('currentLangDisplay').textContent = lang.toUpperCase(); 
+    document.getElementById('langArrow').textContent = '⬇️'; 
+
+    document.getElementById('langAzBtn').classList.remove('active');
+    document.getElementById('langEnBtn').classList.remove('active');
+    document.getElementById('langTrBtn').classList.remove('active');
+    document.getElementById('langRuBtn')?.classList.remove('active');
+    
+    const langBtnId = `lang${lang.charAt(0).toUpperCase() + lang.slice(1)}Btn`;
+    const activeBtn = document.getElementById(langBtnId);
+    if(activeBtn) {
+        activeBtn.classList.add('active');
+    }
+
+    const rewardInfo = getLocalizedReward(lang);
+    const boxCostInfo = localizeAmount(BOX_COST_AZN, lang);
+    
+    document.querySelectorAll('[data-translate-key]').forEach(el => {
+        const key = el.getAttribute('data-translate-key');
+        if (typeof t[key] === 'function') {
+             if (key === 'adReward') {
+                const formattedRewardText = `<b>${rewardInfo.formattedReward} ${rewardInfo.symbol}</b>`;
+                el.innerHTML = t[key](formattedRewardText);
+             } else if (key.startsWith('taskReward')) {
+                const taskIndex = parseInt(key.replace('taskReward', '')) - 1;
+                if (taskIndex >= 0 && taskIndex < AZN_TASK_REWARDS.length) {
+                    const localizedRewardText = getLocalizedTaskReward(lang, AZN_TASK_REWARDS[taskIndex]);
+                    el.innerHTML = t[key](localizedRewardText);
+                }
+             } else if (key === 'mysteryBoxCost') {
+                 el.innerHTML = t[key](`${boxCostInfo.formatted} ${boxCostInfo.symbol}`);
+             } 
+        } else if (t[key]) {
+            if(key !== 'copy' && key !== 'share' && !key.startsWith('taskReward')) {
+               el.innerHTML = t[key];
+            }
+        }
+    });
+    
+    updateTaskButtons(); 
+
+    document.querySelectorAll('.min-withdraw-label').forEach(label => {
+        const methodType = label.getAttribute('data-min-key');
+        if (methodType) {
+            label.textContent = getLocalizedMinAmount(methodType, lang); 
+        }
+    });
+    
+    updateReferralLink();
+    
+    const progressTextSpan = document.getElementById('progressTextSpan');
+    if(progressTextSpan) {
+        progressTextSpan.textContent = `${cnt}/${LIMIT}`;
+    }
+    
+    update(); 
+
+    // MENYU TƏRCÜMƏSİ: Artıq 'data-translate-key' ilə span-larda avtomatik həll olunur, 
+    // əlavə dövr etməyə ehtiyac yoxdur.
+    
+    if (document.getElementById('form').style.display === 'block' && type) {
+        setPlaceholders(type);
+    }
+    
+    if (tInterval && remainingSeconds > 0) {
+         adBtnContent.textContent = t.wait.replace('{s}', remainingSeconds);
+    } else {
+         if (!adBtn.classList.contains('waiting')) {
+             adBtnContent.textContent = t.watchAd;
+         }
+    }
+}
+
+function toggleDropdown() {
+    const dropdown = document.getElementById('langDropdown');
+    dropdown.classList.toggle('show');
+    document.getElementById('langArrow').textContent = dropdown.classList.contains('show') ? '▲' : '⬇️'; 
+}
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    
+    document.getElementById('langArrow').textContent = ''; 
+    
+    applyTranslations(lang);
+    
+    toggleDropdown(); 
+}
+
+const adBtn=document.getElementById('adBtn'), msg=document.getElementById('msg');
+const adBtnContent = document.querySelector('.ad-btn-content');
+
+function displayRewardMsg(messageHTML) {
+    if (rewardMsgTimeout) {
+        clearTimeout(rewardMsgTimeout);
+        rewardMsgTimeout = null;
+    }
+
+    const container = document.getElementById('adRewardNotificationContainer');
+    if (!container) return; 
+
+    let rewardMsgElement = document.getElementById('rewardMsg');
+    
+    if (rewardMsgElement) {
+        rewardMsgElement.innerHTML = messageHTML;
+    } else {
+        rewardMsgElement = document.createElement('div');
+        rewardMsgElement.className = 'reward-msg';
+        rewardMsgElement.id = 'rewardMsg';
+        rewardMsgElement.innerHTML = messageHTML;
+        container.appendChild(rewardMsgElement);
+    }
+    
+    rewardMsgElement.classList.remove('show');
+
+    safeSet(REWARD_MSG_KEY, {
+        html: messageHTML,
+        expire: Date.now() + 2000 
+    });
+
+    setTimeout(() => {
+        rewardMsgElement.classList.add('show');
+    }, 50);
+
+    rewardMsgTimeout = setTimeout(() => {
+        if (rewardMsgElement) {
+            rewardMsgElement.classList.remove('show');
+            setTimeout(() => {
+                if(rewardMsgElement.parentNode === container) {
+                    rewardMsgElement.remove();
+                }
+            }, 400); 
+        }
+        safeRemove(REWARD_MSG_KEY);
+        rewardMsgTimeout = null;
+    }, 2000);
+}
+
+function checkAndDisplayRewardMsg() {
+    const container = document.getElementById('adRewardNotificationContainer');
+    if (!container) return;
+    
+    const currentPage = document.querySelector('.page.active');
+    if (!currentPage || currentPage.id !== 'adsPage') {
+        let rewardMsgElement = document.getElementById('rewardMsg');
+        if (rewardMsgElement) {
+            rewardMsgElement.classList.remove('show');
+        }
+        return;
+    }
+    
+    const savedMsg = safeGet(REWARD_MSG_KEY, null);
+    
+    let rewardMsgElement = document.getElementById('rewardMsg');
+    
+    if (savedMsg) {
+        const remainingTime = savedMsg.expire - Date.now();
+        
+        if (remainingTime > 0) {
+            if (!rewardMsgElement) {
+                rewardMsgElement = document.createElement('div');
+                rewardMsgElement.className = 'reward-msg';
+                rewardMsgElement.id = 'rewardMsg';
+                container.appendChild(rewardMsgElement);
+            }
+            
+            rewardMsgElement.innerHTML = savedMsg.html;
+            rewardMsgElement.classList.remove('show');
+            
+            if (rewardMsgTimeout) {
+                clearTimeout(rewardMsgTimeout);
+            }
+
+            setTimeout(() => {
+                rewardMsgElement.classList.add('show');
+            }, 50);
+
+            rewardMsgTimeout = setTimeout(() => {
+                 if (rewardMsgElement) {
+                    rewardMsgElement.classList.remove('show');
+                    setTimeout(() => {
+                        if(rewardMsgElement.parentNode === container) {
+                            rewardMsgElement.remove();
+                        }
+                    }, 400);
+                }
+                safeRemove(REWARD_MSG_KEY);
+                rewardMsgTimeout = null;
+            }, remainingTime);
+
+        } else {
+            safeRemove(REWARD_MSG_KEY);
+             if (rewardMsgElement && rewardMsgElement.parentNode === container) {
+                 rewardMsgElement.remove();
+             }
+        }
+    } else {
+         if (rewardMsgElement && rewardMsgElement.parentNode === container) {
+             rewardMsgElement.remove();
+         }
+    }
+}
+
+
+function restoreAdBtnState() {
+    const t = TRANSLATIONS[currentLang];
+    
+    if (cnt >= LIMIT) {
+        adBtn.classList.remove('waiting');
+        adBtn.disabled = true;
+        adBtnContent.textContent = t.watchAd;
+        
+        const timerBar = adBtn.querySelector('.timer-bar');
+        if (timerBar) timerBar.remove();
+
+        msg.textContent = t.adLimitReached;
+        
+        checkAndDisplayRewardMsg();
+        return; 
+    }
+    
+    if (tInterval && remainingSeconds > 0) {
+        
+        adBtn.disabled = true;
+        adBtn.classList.add('waiting');
+
+        let timerBar = adBtn.querySelector('.timer-bar');
+        if (!timerBar) {
+            timerBar = document.createElement('div');
+            timerBar.className = 'timer-bar';
+            adBtn.prepend(timerBar);
+        }
+
+        const elapsed = MAX_SECONDS - remainingSeconds;
+        const startPercentage = (elapsed / MAX_SECONDS) * 100;
+        
+        timerBar.style.transition = 'none'; 
+        timerBar.style.width = `${startPercentage}%`; 
+        
+        setTimeout(() => {
+            timerBar.style.transition = `width ${remainingSeconds}s linear`;
+            timerBar.style.width = '100%'; 
+        }, 50); 
+
+        adBtnContent.textContent = t.wait.replace('{s}', remainingSeconds);
+        msg.textContent = '';
+        
+    } else {
+        adBtn.classList.remove('waiting');
+        adBtn.disabled = false;
+        adBtnContent.textContent = t.watchAd;
+        
+        const timerBar = adBtn.querySelector('.timer-bar');
+        if (timerBar) timerBar.remove();
+
+        msg.textContent = '';
+    }
+    
+    checkAndDisplayRewardMsg();
+}
+
+
+adBtn.onclick=()=>{
+  const t = TRANSLATIONS[currentLang];
+  const rewardInfo = getLocalizedReward(currentLang);
+  
+  if(cnt>=LIMIT){ msg.textContent=t.adLimitReached; return; }
+  
+  if (tInterval) return;
+
+  if (rewardMsgTimeout) {
+     clearTimeout(rewardMsgTimeout);
+     rewardMsgTimeout = null;
+  }
+  safeRemove(REWARD_MSG_KEY);
+  let rewardMsgElement = document.getElementById('rewardMsg');
+  if (rewardMsgElement) {
+       rewardMsgElement.classList.remove('show');
+       setTimeout(() => {
+           const container = document.getElementById('adRewardNotificationContainer');
+           if(container && rewardMsgElement.parentNode === container) rewardMsgElement.remove();
+       }, 400); 
+  }
+  
+  adBtn.disabled=true; 
+  adBtn.classList.add('waiting');
+  
+  remainingSeconds = MAX_SECONDS; 
+  
+  let timerBar = adBtn.querySelector('.timer-bar');
+  if (!timerBar) {
+      timerBar = document.createElement('div');
+      timerBar.className = 'timer-bar';
+      adBtn.prepend(timerBar); 
+  }
+  
+  timerBar.style.transition = 'none';
+  timerBar.style.width = '0%';
+  
+  setTimeout(() => {
+    timerBar.style.transition = `width ${MAX_SECONDS}s linear`; 
+    timerBar.style.width = '100%';
+  }, 50); 
+  
+  adBtnContent.textContent = t.wait.replace('{s}', remainingSeconds); 
+  msg.textContent = '';
+  
+  try{if(typeof show_10024800==='function'){show_10024800();}}catch(e){} 
+  
+  tInterval=setInterval(()=>{
+    remainingSeconds--;
+    
+    const currentT = TRANSLATIONS[currentLang];
+    
+    if (adBtnContent) {
+        adBtnContent.textContent = currentT.wait.replace('{s}', remainingSeconds > 0 ? remainingSeconds : '0'); 
+    }
+    
+    if(remainingSeconds === 0){
+        
+        clearInterval(tInterval);
+        tInterval = null;
+        
+        bal+=AZN_REWARD; 
+        totalEarned += AZN_REWARD; 
+        cnt++; 
+        totalAds++; 
+        update(); 
+        
+        const currentRewardInfo = getLocalizedReward(currentLang);
+        const formattedRewardText = `<b>${currentRewardInfo.formattedReward} ${currentRewardInfo.symbol}</b>`;
+        
+        displayRewardMsg(currentT.rewardAddedConfirmed(formattedRewardText));
+        
+        if (timerBar) {
+            timerBar.style.transition = 'none'; 
+            timerBar.remove(); 
+        }
+        
+        adBtn.disabled=false;
+        adBtn.classList.remove('waiting');
+        
+        if (adBtnContent) {
+            adBtnContent.textContent = currentT.watchAd; 
+        }
+        
+        if (cnt >= LIMIT) {
+          msg.textContent = currentT.adLimitReached;
+        } else {
+          msg.textContent = ''; 
+        }
+    }
+  },1000);
+};
+
+const taskNotification = document.getElementById('taskNotification');
+const taskNotificationText = document.getElementById('taskNotificationText');
+
+function showTaskNotification(message) {
+    taskNotificationText.innerHTML = message;
+    
+    taskNotification.classList.remove('notification-hide');
+    taskNotification.classList.remove('notification-show');
+    
+    taskNotification.classList.add('notification-show');
+    
+    setTimeout(() => {
+        taskNotification.classList.remove('notification-show');
+        taskNotification.classList.add('notification-hide');
+    }, 3000);
+}
+
+const taskButtons = [
+    { id: 'joinBtn', key: JOIN_KEY, reward: AZN_TASK_REWARDS[0], url: 'https://t.me/qazancazicmasi' },
+    { id: 'joinBtn2', key: JOIN_KEY2, reward: AZN_TASK_REWARDS[1], url: 'https://t.me/qazancazchat' },
+    { id: 'joinBtn3', key: JOIN_KEY3, reward: AZN_TASK_REWARDS[2], url: 'https://t.me/turaldevelopers' },
+    { id: 'joinBtn4', key: JOIN_KEY4, reward: AZN_TASK_REWARDS[3], url: 'https://t.me/ads_reklam69' }
+];
+
+taskButtons.forEach(task => {
+    const btn = document.getElementById(task.id);
+    if (!btn) return;
+    
+    if (localStorage.getItem(task.key)){
+        const completedText = TRANSLATIONS[currentLang].completed;
+        btn.classList.add('completed');
+        btn.textContent = completedText;
+        btn.disabled=true;
+    }
+    
+    btn.onclick = () => {
+        if (localStorage.getItem(task.key) || btn.disabled) {
+            return; 
+        }
+        
+        const t = TRANSLATIONS[currentLang];
+
+        window.open(task.url, '_blank');
+        
+        btn.disabled = true;
+        btn.classList.add('waiting'); 
+        btn.textContent = t.wait.replace('{s}', '3');
+        
+        setTimeout(() => {
+            
+            bal += task.reward; 
+            totalEarned += task.reward; 
+            safeSet(BAL_KEY, bal);
+            safeSet(TOTAL_EARNED_KEY, totalEarned);
+            
+            localStorage.setItem(task.key, '1');
+            
+            update();
+            
+            btn.classList.remove('waiting');
+            btn.classList.add('completed');
+            btn.textContent = t.completed;
+            btn.disabled = true;
+            
+            const localizedRewardText = getLocalizedTaskReward(currentLang, task.reward);
+
+            showTaskNotification(t.taskSuccess(localizedRewardText));
+            
+        }, 3000); 
+    };
+});
+
+
+const refLinkDisplay = document.getElementById('referralLinkDisplay');
+const copyBtn = document.getElementById('copyRefLinkBtn');
+const shareBtn = document.getElementById('shareRefLinkBtn');
+const copyMessage = document.getElementById('copyMessage');
+
+function updateReferralLink() {
+    const baseUrl = refLinkDisplay.getAttribute('data-ref-base'); 
+    const fullLink = baseUrl + USER_REF_CODE; 
+    
+    refLinkDisplay.textContent = fullLink;
+}
+
+async function fallbackCopyTextToClipboard(text, t) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    textArea.style.position = "fixed";
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (successful) {
+            return true;
+        } else {
+            throw new Error('execCommand failed');
+        }
+    } catch (err) {
+        document.body.removeChild(textArea);
+        console.error('Fallback Kopyalama Uğursuz Oldu:', err);
+        return false;
+    }
+}
+
+copyBtn.onclick = async () => {
+    const fullLink = refLinkDisplay.textContent;
+    const t = TRANSLATIONS[currentLang];
+    let success = false;
+    
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(fullLink);
+            success = true;
+        } catch (err) {
+        }
+    }
+    
+    if (!success) {
+        success = await fallbackCopyTextToClipboard(fullLink, t);
+    }
+    
+    if (success) {
+        copyMessage.textContent = t.copied;
+        copyMessage.style.display = 'block';
+        copyMessage.style.backgroundColor = '#d1e7dd';
+        copyMessage.style.color = '#0f5132';
+    } else {
+        copyMessage.textContent = t.copyFailed;
+        copyMessage.style.display = 'block';
+        copyMessage.style.backgroundColor = '#f8d7da';
+        copyMessage.style.color = '#842029';
+    }
+
+    setTimeout(() => {
+        copyMessage.style.display = 'none';
+    }, 2000);
+};
+
+shareBtn.onclick = () => {
+    const fullLink = refLinkDisplay.textContent;
+    const t = TRANSLATIONS[currentLang];
+    
+    const shareText = t.shareMessage(fullLink);
+
+    const encodedText = encodeURIComponent(shareText);
+    
+    const telegramShareUrl = `https://t.me/share/url?url=${encodedText}`;
+
+    window.open(telegramShareUrl, '_blank');
+};
+
+
+const usernameModal = document.getElementById('usernameModal');
+const usernameInput = document.getElementById('usernameInput');
+const saveUsernameBtn = document.getElementById('saveUsernameBtn');
+const usernameError = document.getElementById('usernameError');
+
+saveUsernameBtn.onclick = () => {
+    const t = TRANSLATIONS[currentLang];
+    let username = usernameInput.value.trim(); 
+    
+    if (username.length < USERNAME_MIN_LENGTH) {
+        usernameError.textContent = t.usernameTooShort;
+        setTimeout(() => { usernameError.textContent = ''; }, 3000);
+        return;
+    }
+    
+    if (username.length > USERNAME_MAX_LENGTH) {
+        usernameError.textContent = t.usernameTooLong;
+        setTimeout(() => { usernameError.textContent = ''; }, 3000);
+        return;
+    }
+    
+    if (!/^[a-zA-Z0-9_]{5,15}$/.test(username)) { 
+         usernameError.textContent = t.usernameInvalid;
+         setTimeout(() => { usernameError.textContent = ''; }, 3000);
+         return;
+    }
+
+    safeSet(USERNAME_KEY, username);
+    
+    showTaskNotification(t.usernameSaved);
+    
+    usernameModal.style.display = 'none';
+    
+    update();
+};
+
+function checkUsernameAndShowModal() {
+    const savedUsername = safeGet(USERNAME_KEY, '');
+    const currentPageId = document.querySelector('.page.active').id;
+    
+    if (!savedUsername) {
+        usernameModal.style.display = 'flex';
+        usernameInput.value = '';
+        usernameError.textContent = '';
+        return true; 
+    }
+    
+    return false;
+}
+
+function showPage(id, btn){
+  if (btn.classList.contains('active')) {
+      return; 
+  }
+
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  if (id === 'adsPage') {
+    restoreAdBtnState(); 
+  } else if (id === 'tasksPage') {
+    updateTaskButtons();
+  } else if (id === 'referralPage') {
+    updateReferralLink();
+  } else if (id === 'marketPage') { 
+    if (checkUsernameAndShowModal()) { 
+        return; 
+    }
+    updateMegaBoxState(); 
+  } else {
+    let rewardMsgElement = document.getElementById('rewardMsg');
+    if (rewardMsgElement) {
+        rewardMsgElement.classList.remove('show');
+    }
+  }
+}
+
+const methods = document.querySelectorAll('.method');
+const form = document.getElementById('form');
+const details = document.getElementById('details');
+const amount = document.getElementById('amount');
+const alertBox = document.getElementById('alert');
+let type = '';
+
+methods.forEach(m=>{
+  m.onclick=()=>{
+    type=m.dataset.type;
+    document.getElementById('methods').style.display='none';
+    form.style.display='block';
+    setPlaceholders(type);
+    details.value='';
+    amount.value='';
+    alertBox.style.display='none';
+  };
+});
+
+document.getElementById('backBtn').onclick=()=>{
+  form.style.display='none';
+  document.getElementById('methods').style.display='flex';
+  alertBox.style.display='none';
+  type='';
+};
+
+document.getElementById('withdrawBtn').onclick=()=>{
+  const det = details.value.trim();
+  const amt = parseFloat(amount.value);
+  alertBox.style.display='none';
+  const t = TRANSLATIONS[currentLang];
+  const currencyInfo = CURRENCIES[currentLang];
+
+  if(!type){ showErr(t.methodError); return; }
+  if(!det){ showErr(t.detailsError); return; }
+  if(isNaN(amt) || amt <= 0){ showErr(t.amountError); return; }
+  
+  
+  const aznEquivalentMinAmount = getAZNEquivalentMinWithdrawal(currentLang);
+
+  let minAmount = 0;
+  let currentBalanceInLang = bal; 
+  
+  if (currentLang === 'tr') {
+      currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_TRY;
+      minAmount = 100;
+  } else if (currentLang === 'en') {
+      currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_USD;
+      minAmount = 2.40;
+  } else if (currentLang === 'ru') {
+      currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_RUB;
+      minAmount = 188;
+  } else { 
+      currentBalanceInLang = bal;
+      minAmount = 4;
+  }
+  
+  const EPSILON = 0.0001; 
+  
+  if(amt < minAmount - EPSILON){ 
+    showErr(t.minAmount(getLocalizedMinAmount(type, currentLang))); 
+    return; 
+  }
+  
+  if(amt > currentBalanceInLang + EPSILON){ showErr(t.balanceError); return; }
+
+  let withdrawalAmountInAZN = 0;
+  if (currentLang === 'tr') {
+    withdrawalAmountInAZN = amt / EXCHANGE_RATES.AZN_TO_TRY;
+  } else if (currentLang === 'en') {
+    withdrawalAmountInAZN = amt / EXCHANGE_RATES.AZN_TO_USD;
+  } else if (currentLang === 'ru') {
+    withdrawalAmountInAZN = amt / EXCHANGE_RATES.AZN_TO_RUB;
+  } else {
+    withdrawalAmountInAZN = amt; 
+  }
+
+  bal -= withdrawalAmountInAZN; 
+  safeSet(BAL_KEY,bal);
+  update();
+
+  alertBox.textContent=t.withdrawSuccess;
+  alertBox.className='alert success';
+  alertBox.style.display='block';
+
+  setTimeout(()=>{
+    form.style.display='none';
+    document.getElementById('methods').style.display='flex';
+    alertBox.style.display='none';
+    type='';
+  }, 2000);
+  
+};
+
+function showErr(msg){
+  alertBox.textContent=msg;
+  alertBox.className='alert error';
+  alertBox.style.display='block';
+}
+
+update();
+applyTranslations(currentLang); 
+updateReferralLink();
+updateUsernameDisplay(); 
+
+restoreAdBtnState();
+
+setTimeout(()=>{
+  const s=document.getElementById("loadingScreen");
+  s.style.opacity="0";
+  setTimeout(()=>s.style.display="none",700);
+},3000);
+</script>
+</body>
+</html>
