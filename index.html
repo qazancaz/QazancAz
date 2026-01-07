@@ -2,7 +2,7 @@
 <html lang="az">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width-device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 <title id="pageTitle">Qazanc AZ</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="//libtl.com/sdk.js" data-zone="10024800" data-sdk="show_10024800"></script>
@@ -372,10 +372,10 @@ body{
 .ad-card{margin-bottom:12px;}
 .ad-card h2{font-size:18px;color:var(--text-dark);margin-bottom:6px;}
 .ad-card p{margin:4px 0;color:var(--text-dark);font-size:13px;}
-.task-card{margin-bottom:10px;}
-.task-card h2{font-size:16px;color:var(--text-dark);margin-bottom:4px;}
-.task-card p{margin:2px 0;color:var(--text-dark);font-size:12px;}
-.task-card button{width:100%;margin-top:8px;padding:10px;font-size:13px;font-weight:700;border:none;border-radius:12px;background:linear-gradient(90deg,var(--secondary-btn-gradient-start),var(--secondary-btn-gradient-end)); 
+.task-card{margin-bottom:10px;padding: 15px 14px;} /* Kiçik boy üçün padding azaldıldı */
+.task-card h2{font-size:15px;color:var(--text-dark);margin-bottom:3px;} /* Font kiçildildi */
+.task-card p{margin:2px 0;color:var(--text-dark);font-size:11px;} /* Font kiçildildi */
+.task-card button{width:100%;margin-top:8px;padding:10px;font-size:12px;font-weight:700;border:none;border-radius:12px;background:linear-gradient(90deg,var(--secondary-btn-gradient-start),var(--secondary-btn-gradient-end)); 
     color:var(--text-light);cursor:pointer;transition:0.3s;}
 .task-card button:hover{transform:scale(1.03);box-shadow:0 0 20px rgba(255,95,109,0.6);}
 .task-card button.completed{background:gray !important;box-shadow:none !important;cursor:not-allowed !important;pointer-events:none !important;opacity:0.55;}
@@ -793,7 +793,7 @@ body{
 <div class="modal-overlay" id="usernameModal">
     <div class="modal-content">
         <h3 data-translate-key="usernameTitle">İstifadəçi Adı Qeydiyyatı</h3>
-        <p style="margin-bottom: 15px; font-size: 14px;" data-translate-key="usernameInfo">Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan, 5-15 simvol) daxil edin.</p>
+        <p style="margin-bottom: 15px; font-size: 14px;" data-translate-key="usernameInfo">Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan) daxil edin.</p>
         
         <div class="input-group">
             <span>@</span>
@@ -876,8 +876,18 @@ body{
   <div id="tasksPage" class="page">
     <div class="task-card">
       <h2 data-translate-key="premiumTask">Premium Tapşırıq</h2>
+      <p data-translate-key="taskReward5">Kanala qoşul və <b>0.15 ₼</b> qazan!</p>
+      <button id="joinBtn5" data-translate-key="joinChannel">Kanala Qoşul</button>
+    </div>
+    <div class="task-card">
+      <h2 data-translate-key="premiumTask">Premium Tapşırıq</h2>
       <p data-translate-key="taskReward1">Kanala qoşul və <b>0.1 ₼</b> qazan!</p>
       <button id="joinBtn" data-translate-key="joinChannel">Kanala Qoşul</button>
+    </div>
+    <div class="task-card">
+      <h2 data-translate-key="premiumTask">Premium Tapşırıq</h2>
+      <p data-translate-key="taskReward6">Qrupa qoşul və <b>0.25 ₼</b> qazan!</p>
+      <button id="joinBtn6" data-translate-key="joinGroup">Qrupa Qoşul</button>
     </div>
     <div class="task-card">
       <h2 data-translate-key="bonusTask">Bonus Tapşırıq</h2>
@@ -1053,7 +1063,7 @@ const CURRENCIES = {
 };
 
 const AZN_REWARD = 0.001; 
-const AZN_TASK_REWARDS = [0.1, 0.1, 0.15, 0.05]; 
+const AZN_TASK_REWARDS = [0.15, 0.1, 0.25, 0.1, 0.15, 0.05]; 
 const TOTAL_TASKS_COUNT = AZN_TASK_REWARDS.length; 
 
 const AZN_MIN_WITHDRAW = { m10: 4, azercell: 4, bakcell: 4, nar: 4, bank: 4, usdt: 4 }; 
@@ -1069,7 +1079,7 @@ const USERNAME_MAX_LENGTH = 15;
 
 // --- YERLİ SAXLAMA AÇARLARI ---
 const BAL_KEY='bal',COUNT_KEY='cnt',RESET_KEY='resetTime';
-const JOIN_KEY='joined',JOIN_KEY2='joined2',JOIN_KEY3='joined3',JOIN_KEY4='joined4'; 
+const JOIN_KEY='joined',JOIN_KEY2='joined2',JOIN_KEY3='joined3',JOIN_KEY4='joined4',JOIN_KEY5='joined5',JOIN_KEY6='joined6'; 
 const TOTAL_ADS_KEY = 'totalAdsWatched';
 const TOTAL_EARNED_KEY = 'totalAZNEarned';
 const REWARD_MSG_KEY = 'rewardMsgExpire'; 
@@ -1179,6 +1189,8 @@ const TRANSLATIONS = {
         taskReward2: (r) => `Qrupa qoşul və ${r} qazan!`,
         taskReward3: (r) => `Kanala qoşul və ${r} qazan!`,
         taskReward4: (r) => `Kanala qoşul və ${r} qazan!`,
+        taskReward5: (r) => `Kanala qoşul və ${r} qazan!`,
+        taskReward6: (r) => `Qrupa qoşul və ${r} qazan!`,
         joinChannel: 'Kanala Qoşul',
         joinGroup: 'Qrupa Qoşul',
         withdrawTitle: 'Çıxarış',
@@ -1212,7 +1224,7 @@ const TRANSLATIONS = {
         completed: 'Tamamlandı', 
         taskSuccess: (r) => `✅ Tapşırıq tamamlandı! ${r} əlavə olundu.`,
         usernameTitle: 'İstifadəçi Adı Qeydiyyatı',
-        usernameInfo: `Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} simvol) daxil edin.`,
+        usernameInfo: `Davam etmək üçün Telegram istifadəçi adınızı (@ olmadan) daxil edin.`,
         saveUsername: 'Yadda Saxla',
         usernameTooShort: `İstifadəçi adı minimum ${USERNAME_MIN_LENGTH} simvol olmalıdır!`,
         usernameTooLong: `İstifadəçi adı maksimum ${USERNAME_MAX_LENGTH} simvol olmalıdır!`,
@@ -1253,6 +1265,8 @@ const TRANSLATIONS = {
         taskReward2: (r) => `Join group and earn ${r}!`,
         taskReward3: (r) => `Join channel and earn ${r}!`,
         taskReward4: (r) => `Join channel and earn ${r}!`,
+        taskReward5: (r) => `Join channel and earn ${r}!`,
+        taskReward6: (r) => `Join group and earn ${r}!`,
         joinChannel: 'Join Channel',
         joinGroup: 'Join Group',
         withdrawTitle: 'Withdrawal',
@@ -1286,7 +1300,7 @@ const TRANSLATIONS = {
         completed: 'Completed', 
         taskSuccess: (r) => `✅ Task completed! ${r} added.`, 
         usernameTitle: 'Username Registration',
-        usernameInfo: `Please enter your Telegram username (without @, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} chars) to continue.`,
+        usernameInfo: `Please enter your Telegram username (without @) to continue.`,
         saveUsername: 'Save',
         usernameTooShort: `Username must be at least ${USERNAME_MIN_LENGTH} characters!`,
         usernameTooLong: `Username must be maximum ${USERNAME_MAX_LENGTH} characters!`,
@@ -1327,6 +1341,8 @@ const TRANSLATIONS = {
         taskReward2: (r) => `Gruba katıl ve ${r} kazan!`,
         taskReward3: (r) => `Kanala katıl ve ${r} kazan!`,
         taskReward4: (r) => `Kanala katıl ve ${r} kazan!`,
+        taskReward5: (r) => `Kanala katıl ve ${r} kazan!`,
+        taskReward6: (r) => `Gruba katıl ve ${r} kazan!`,
         joinChannel: 'Kanala Katıl',
         joinGroup: 'Gruba Katıl',
         withdrawTitle: 'Para Çekme',
@@ -1360,7 +1376,7 @@ const TRANSLATIONS = {
         completed: 'Tamamlandı', 
         taskSuccess: (r) => `✅ Görev tamamlandı! ${r} eklendi.`, 
         usernameTitle: 'Kullanıcı Adı Kaydı',
-        usernameInfo: `Devam etmek için Telegram kullanıcı adınızı (@ olmadan, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} karakter) giriniz.`,
+        usernameInfo: `Devam etmek için Telegram kullanıcı adınızı (@ olmadan) giriniz.`,
         saveUsername: 'Kaydet',
         usernameTooShort: `Kullanıcı adı en az ${USERNAME_MIN_LENGTH} karakter olmalıdır!`,
         usernameTooLong: `Kullanıcı adı maksimum ${USERNAME_MAX_LENGTH} karakter olmalıdır!`,
@@ -1401,6 +1417,8 @@ const TRANSLATIONS = {
         taskReward2: (r) => `Присоединитесь к группе и заработайте ${r}!`,
         taskReward3: (r) => `Подпишитесь на канал и заработайте ${r}!`,
         taskReward4: (r) => `Подпишитесь на канал и заработайте ${r}!`,
+        taskReward5: (r) => `Подпишитесь на канал и заработайте ${r}!`,
+        taskReward6: (r) => `Присоединитесь к группе и заработайте ${r}!`,
         joinChannel: 'Подписаться',
         joinGroup: 'Вступить в Группу',
         withdrawTitle: 'Вывод Средств',
@@ -1434,7 +1452,7 @@ const TRANSLATIONS = {
         completed: 'Выполнено', 
         taskSuccess: (r) => `✅ Задание выполнено! ${r} добавлено.`,
         usernameTitle: 'Регистрация Имени Пользователя',
-        usernameInfo: `Для продолжения введите свое имя пользователя Telegram (без @, ${USERNAME_MIN_LENGTH}-${USERNAME_MAX_LENGTH} символов).`,
+        usernameInfo: `Для продолжения введите свое имя пользователя Telegram (без @).`,
         saveUsername: 'Сохранить',
         usernameTooShort: `Имя пользователя должно содержать не менее ${USERNAME_MIN_LENGTH} символов!`,
         usernameTooLong: `Имя пользователя должно содержать не более ${USERNAME_MAX_LENGTH} символов!`,
@@ -1567,7 +1585,7 @@ function update(){
   document.getElementById('adsCount').textContent=cnt;
   document.getElementById('progress').style.width=(cnt/LIMIT*100)+'%';
   const progressTextSpan = document.getElementById('progressTextSpan');
-  if(progressTextSpan) progressTextSpan.textContent = `${cnt}/${LIMIT}`;
+  if(progressTextSpan) progressTextSpan.textContent = `\( {cnt}/ \){LIMIT}`;
   
   safeSet(BAL_KEY,bal);
   safeSet(COUNT_KEY,cnt);
@@ -1742,7 +1760,7 @@ function setPlaceholders(methodType) {
     details.placeholder = t[detailsKey] || '';
     
     const minTextOnly = localizedMinAmount.split(' ')[0]; 
-    amount.placeholder = `${t.placeholderAmount} (${currency}) - ${minTextOnly}`; 
+    amount.placeholder = `\( {t.placeholderAmount} ( \){currency}) - ${minTextOnly}`; 
 }
 
 function applyTranslations(lang) {
@@ -1802,7 +1820,7 @@ function applyTranslations(lang) {
     
     const progressTextSpan = document.getElementById('progressTextSpan');
     if(progressTextSpan) {
-        progressTextSpan.textContent = `${cnt}/${LIMIT}`;
+        progressTextSpan.textContent = `\( {cnt}/ \){LIMIT}`;
     }
     
     update(); 
@@ -2124,10 +2142,12 @@ function showTaskNotification(message) {
 }
 
 const taskButtons = [
-    { id: 'joinBtn', key: JOIN_KEY, reward: AZN_TASK_REWARDS[0], url: 'https://t.me/qazancazicmasi' },
-    { id: 'joinBtn2', key: JOIN_KEY2, reward: AZN_TASK_REWARDS[1], url: 'https://t.me/qazancazchat' },
-    { id: 'joinBtn3', key: JOIN_KEY3, reward: AZN_TASK_REWARDS[2], url: 'https://t.me/turaldevelopers' },
-    { id: 'joinBtn4', key: JOIN_KEY4, reward: AZN_TASK_REWARDS[3], url: 'https://t.me/ads_reklam69' }
+    { id: 'joinBtn5', key: JOIN_KEY5, reward: AZN_TASK_REWARDS[0], url: 'https://t.me/azebitget' },
+    { id: 'joinBtn', key: JOIN_KEY, reward: AZN_TASK_REWARDS[1], url: 'https://t.me/qazancazicmasi' },
+    { id: 'joinBtn6', key: JOIN_KEY6, reward: AZN_TASK_REWARDS[2], url: 'https://t.me/bitgetaze' },
+    { id: 'joinBtn2', key: JOIN_KEY2, reward: AZN_TASK_REWARDS[3], url: 'https://t.me/qazancazchat' },
+    { id: 'joinBtn3', key: JOIN_KEY3, reward: AZN_TASK_REWARDS[4], url: 'https://t.me/turaldevelopers' },
+    { id: 'joinBtn4', key: JOIN_KEY4, reward: AZN_TASK_REWARDS[5], url: 'https://t.me/ads_reklam69' }
 ];
 
 taskButtons.forEach(task => {
