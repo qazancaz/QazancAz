@@ -190,7 +190,7 @@ body{
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
 /* Balans və Kart Dizaynı */
-.balance-card, .ad-card, .task-card, .referral-card, .market-card{
+.balance-card, .ad-card, .task-card, .referral-card, .market-card, .promo-card{
   background:var(--card-bg);
   border-radius:25px;
   padding:20px 18px;
@@ -216,6 +216,53 @@ body{
     font-weight: 800;
 }
 
+/* Promo Kartı Stili */
+.promo-card {
+    text-align: center;
+}
+.promo-card h2 {
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+.promo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.promo-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--input-text); 
+}
+.promo-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, var(--secondary-btn-gradient-start), var(--secondary-btn-gradient-end));
+    color: var(--text-light);
+    font-weight: 700;
+    cursor: pointer;
+}
+.promo-message {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 1.2em; 
+}
+.promo-message.success {
+    color: #0f5132;
+}
+.promo-message.error {
+    color: #842029;
+}
 
 /* Mega Box Stili */
 .mega-box-container {
@@ -944,32 +991,32 @@ body{
       <div class="method" data-type="m10">
           <img src="https://i.postimg.cc/Kj94hVNG/unnamed.png" alt="M10 Logo" class="method-logo">
           <span class="method-text">M10</span>
-          <span class="min-withdraw-label" data-min-key="m10">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="m10">5 ₼</span>
       </div>
       <div class="method" data-type="azercell">
           <img src="https://i.postimg.cc/qM5gmPqZ/applogo512.png" alt="Azercell Logo" class="method-logo">
           <span class="method-text">Azercell</span>
-          <span class="min-withdraw-label" data-min-key="azercell">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="azercell">5 ₼</span>
       </div>
       <div class="method" data-type="bakcell">
           <img src="https://i.postimg.cc/Pqmx5N49/images.jpg" alt="Bakcell Logo" class="method-logo">
           <span class="method-text">Bakcell</span>
-          <span class="min-withdraw-label" data-min-key="bakcell">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="bakcell">5 ₼</span>
       </div>
       <div class="method" data-type="nar">
           <img src="https://i.postimg.cc/4NmxhWPy/images.png" alt="Nar Logo" class="method-logo">
           <span class="method-text">Nar</span>
-          <span class="min-withdraw-label" data-min-key="nar">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="nar">5 ₼</span>
       </div>
       <div class="method" data-type="bank">
           <img src="https://i.postimg.cc/L6H0yWwZ/42492-bank-1024.png" alt="Bank Logo" class="method-logo bank-logo">
           <span class="method-text" data-translate-key="bankCard">Bank</span>
-          <span class="min-withdraw-label" data-min-key="bank">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="bank">5 ₼</span>
       </div>
       <div class="method" data-type="usdt">
           <img src="https://i.postimg.cc/X7HxsY98/Tether-USDT-Logo.png" alt="USDT Logo" class="method-logo">
           <span class="method-text">USDT</span>
-          <span class="min-withdraw-label" data-min-key="usdt">4 ₼</span>
+          <span class="min-withdraw-label" data-min-key="usdt">5 ₼</span>
       </div>
     </div>
     <div class="form" id="form">
@@ -978,6 +1025,23 @@ body{
       <input id="amount" type="number" placeholder="">
       <button id="withdrawBtn" data-translate-key="withdraw">Çıxarış Et</button>
       <div id="alert" class="alert"></div>
+    </div>
+  </div>
+
+  <div id="promoPage" class="page">
+    <div class="balance-card">
+      <h3 data-translate-key="currentBalance">Balans</h3>
+      <div class="amount"><span id="balancePromo">0.0000</span> <span id="currencySymbolPromo">₼</span></div>
+      <div class="usd"><span id="secondaryCurrencySymbolPromo">$</span><span id="secondaryBalancePromo">0.0000</span> <span id="secondaryCurrencyTextPromo">USD</span></div>
+    </div>
+    
+    <div class="promo-card">
+      <h2 data-translate-key="promoTitle">Promo Kod</h2>
+      <div class="promo-form">
+        <input id="promoInput" class="promo-input" type="text" placeholder="" data-translate-key="enterCode">
+        <button id="promoSubmitBtn" class="promo-submit" data-translate-key="submitCode">Təsdiqlə</button>
+      </div>
+      <div id="promoMessage" class="promo-message"></div>
     </div>
   </div>
 
@@ -1003,6 +1067,10 @@ body{
   <button onclick="showPage('walletPage',this)" data-page-id="walletPage">
     <span class="nav-icon">💼</span>
     <span class="nav-text" data-translate-key="wallet">Cüzdan</span>
+  </button>
+  <button onclick="showPage('promoPage',this)" data-page-id="promoPage">
+    <span class="nav-icon">🎟️</span>
+    <span class="nav-text" data-translate-key="promo">Promo</span>
   </button>
 </div>
 
@@ -1066,11 +1134,23 @@ const AZN_REWARD = 0.001;
 const AZN_TASK_REWARDS = [0.15, 0.25, 0.1, 0.1, 0.15, 0.05]; 
 const TOTAL_TASKS_COUNT = AZN_TASK_REWARDS.length; 
 
-const AZN_MIN_WITHDRAW = { m10: 4, azercell: 4, bakcell: 4, nar: 4, bank: 4, usdt: 4 }; 
+const AZN_MIN_WITHDRAW = { m10: 5, azercell: 5, bakcell: 5, nar: 5, bank: 5, usdt: 5 }; 
 
 // YENİ: Mega Box Dəyişənləri
 const BOX_COST_AZN = 0.50;
 const BOX_REWARDS_AZN = [0.05, 0.05, 0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 0.25]; // Mükafat ehtimalları
+
+// Promo Kodlar və Ödüllər
+const PROMO_CODES = {
+    0.05: ['QZ5A9M2', 'L3K7R0X', 'A9M2QZ5', 'X7L3K0R', 'M5Q2A9Z', 'R0X7L3K', 'Z9A5M2Q', 'K3X0R7L', 'Q2M9A5Z', 'L7R0X3K', 'A5Z2Q9M', 'X0K7R3L', 'M2QZ9A5', 'R3L0K7X', 'Z5A9Q2M', 'K7L3X0R', 'Q9M5A2Z', 'L0R7K3X', 'A2ZQ5M9', 'X3K0L7R'],
+    0.10: ['P1T8K9A', 'Z4R0M2L', 'K9A1P8T', 'L2M0R4Z', 'A8T1K9P', 'Z0R2M4L', 'K1P9T8A', 'M4L2Z0R', 'P8A9K1T', 'R2Z4L0M', 'A1K8P9T', 'L0M4Z2R', 'T9P1A8K', 'Z2R0L4M', 'K8A1T9P', 'M0L2R4Z', 'P9T8K1A', 'R4Z2M0L', 'A8K9T1P', 'L4M0Z2R'],
+    0.20: ['H7Q2X9B', 'M4A8K0R', 'B9X2Q7H', 'R0K8A4M', 'QH7B2X9', 'A4M0R8K', 'X9B7H2Q', 'K8R4M0A', 'H2Q9X7B', 'M8A4R0K', 'B7X9Q2H', 'R4K0A8M', 'Q2H7B9X', 'A0M4K8R', 'X7B2H9Q', 'K4R8M0A', 'H9Q7X2B', 'M0A8R4K', 'B2X7Q9H', 'R8K4A0M'],
+    0.50: ['S5F9W2N', 'C8L0A7R', 'N2W9F5S', 'R7A0L8C', 'F5S2W9N', 'L8C7R0A', 'W9N5F2S', 'A0R8L7C', 'S9F5N2W', 'C0L7A8R', 'N5W2S9F', 'R8A7L0C', 'F2S9W5N', 'L0C8R7A', 'W5N9F2S', 'A7R0L8C', 'S2F5N9W', 'C7L8A0R', 'N9W5S2F', 'R0A8C7L'],
+    1.00: ['G9V4ZK2', 'Y1M8Q0R', 'K2Z4V9G', 'R0Q8M1Y', 'V9G2KZ4', 'M1Y0R8Q', 'Z4K9V2G', 'Q8R0Y1M', 'G4Z2V9K', 'Y0M1R8Q', 'V2G9K4Z', 'R8Q1M0Y', 'Z9V4G2K', 'M8Y0Q1R', 'K4G2Z9V', 'Q1R8Y0M', 'G2V9ZK4', 'Y8M1Q0R', 'V4KZ2G9', 'R0QY8M1']
+};
+
+// Promo Kodlar üçün LocalStorage Açar
+const USED_PROMO_CODES_KEY = 'usedPromoCodes';
 
 // --- İSTİFADƏÇİ ADI AÇARI ---
 const USERNAME_KEY = 'az_username';
@@ -1131,21 +1211,21 @@ function getLocalizedMinAmount(methodType, lang) {
     let symbol = currencyInfo.symbol;
     let formattedAmount;
     
-    // Hədəf dəyərlər
+    // Hədəf dəyərlər 5₼ əsasında
     if (lang === 'az') {
-        formattedAmount = '4';
+        formattedAmount = '5';
         symbol = '₼';
     } else if (lang === 'en') {
-        formattedAmount = '2.40'; 
+        formattedAmount = (5 * EXCHANGE_RATES.AZN_TO_USD).toFixed(4); 
         symbol = '$';
     } else if (lang === 'tr') {
-        formattedAmount = '100';
+        formattedAmount = (5 * EXCHANGE_RATES.AZN_TO_TRY).toFixed(2);
         symbol = '₺';
     } else if (lang === 'ru') {
-        formattedAmount = '188';
+        formattedAmount = (5 * EXCHANGE_RATES.AZN_TO_RUB).toFixed(2);
         symbol = '₽';
     } else {
-        formattedAmount = '4';
+        formattedAmount = '5';
         symbol = '₼';
     }
     
@@ -1153,15 +1233,7 @@ function getLocalizedMinAmount(methodType, lang) {
 }
 
 function getAZNEquivalentMinWithdrawal(lang) {
-    if (lang === 'en') {
-        return 2.40 / EXCHANGE_RATES.AZN_TO_USD; 
-    } else if (lang === 'tr') {
-        return 100 / EXCHANGE_RATES.AZN_TO_TRY;
-    } else if (lang === 'ru') {
-        return 188 / EXCHANGE_RATES.AZN_TO_RUB;
-    } else { // AZ
-        return 4.0; 
-    }
+    return 5.0; // Bütün dillər üçün AZN ekvivalenti 5₼
 }
 
 const TRANSLATIONS = {
@@ -1169,6 +1241,13 @@ const TRANSLATIONS = {
         pageTitle: 'Qazanc AZ',
         loading: 'Yüklənir...',
         market: 'Market', 
+        promo: 'Promo',
+        promoTitle: 'Promo Kod',
+        enterCode: 'Promo kod daxil edin',
+        submitCode: 'Təsdiqlə',
+        codeUsed: 'Bu kodu artıq istifadə etmisiniz!',
+        invalidCode: 'Yanlış promo kod!',
+        codeSuccess: (r) => `✅ ${r} əlavə olundu!`,
         currentBalance: 'Balans',
         withdrawBalance: 'Balans',
         dailyAds: 'Günlük Reklamlar',
@@ -1245,6 +1324,13 @@ const TRANSLATIONS = {
         pageTitle: 'Earn AZ',
         loading: 'Loading...',
         market: 'Shop',
+        promo: 'Promo',
+        promoTitle: 'Promo Code',
+        enterCode: 'Enter promo code',
+        submitCode: 'Submit',
+        codeUsed: 'You have already used this code!',
+        invalidCode: 'Invalid promo code!',
+        codeSuccess: (r) => `✅ ${r} added!`,
         currentBalance: 'Balance',
         withdrawBalance: 'Balance',
         dailyAds: 'Daily Ads',
@@ -1321,6 +1407,13 @@ const TRANSLATIONS = {
         pageTitle: 'Kazan AZ',
         loading: 'Yükleniyor...',
         market: 'Mağaza', 
+        promo: 'Promo',
+        promoTitle: 'Promo Kod',
+        enterCode: 'Promo kod girin',
+        submitCode: 'Onayla',
+        codeUsed: 'Bu kodu zaten kullandınız!',
+        invalidCode: 'Geçersiz promo kod!',
+        codeSuccess: (r) => `✅ ${r} eklendi!`,
         currentBalance: 'Bakiye',
         withdrawBalance: 'Bakiye',
         dailyAds: 'Günlük Reklamlar',
@@ -1397,6 +1490,13 @@ const TRANSLATIONS = {
         pageTitle: 'Заработок AZ',
         loading: 'Загрузка...',
         market: 'Рынок', 
+        promo: 'Промо',
+        promoTitle: 'Промо Код',
+        enterCode: 'Введите промо код',
+        submitCode: 'Подтвердить',
+        codeUsed: 'Вы уже использовали этот код!',
+        invalidCode: 'Неверный промо код!',
+        codeSuccess: (r) => `✅ ${r} добавлено!`,
         currentBalance: 'Баланс',
         withdrawBalance: 'Баланс',
         dailyAds: 'Ежедневная Реклама',
@@ -1560,26 +1660,36 @@ function update(){
   document.getElementById('balance2').textContent = mainFormat(mainBalance);
   const balanceMarket = document.getElementById('balanceMarket');
   if (balanceMarket) balanceMarket.textContent = mainFormat(mainBalance);
+  const balancePromo = document.getElementById('balancePromo');
+  if (balancePromo) balancePromo.textContent = mainFormat(mainBalance);
   
   document.getElementById('currencySymbol').textContent = mainSymbol;
   document.getElementById('currencySymbol2').textContent = mainSymbol;
   const currencySymbolMarket = document.getElementById('currencySymbolMarket');
   if (currencySymbolMarket) currencySymbolMarket.textContent = mainSymbol;
+  const currencySymbolPromo = document.getElementById('currencySymbolPromo');
+  if (currencySymbolPromo) currencySymbolPromo.textContent = mainSymbol;
   
   document.getElementById('secondaryBalance').textContent = secondaryFormat(secondaryBalance);
   document.getElementById('secondaryBalance2').textContent = secondaryFormat(secondaryBalance);
   const secondaryBalanceMarket = document.getElementById('secondaryBalanceMarket');
   if (secondaryBalanceMarket) secondaryBalanceMarket.textContent = secondaryFormat(secondaryBalance);
+  const secondaryBalancePromo = document.getElementById('secondaryBalancePromo');
+  if (secondaryBalancePromo) secondaryBalancePromo.textContent = secondaryFormat(secondaryBalance);
   
   document.getElementById('secondaryCurrencySymbol').textContent = secondarySymbol;
   document.getElementById('secondaryCurrencySymbol2').textContent = secondarySymbol;
   const secondaryCurrencySymbolMarket = document.getElementById('secondaryCurrencySymbolMarket');
   if (secondaryCurrencySymbolMarket) secondaryCurrencySymbolMarket.textContent = secondarySymbol;
+  const secondaryCurrencySymbolPromo = document.getElementById('secondaryCurrencySymbolPromo');
+  if (secondaryCurrencySymbolPromo) secondaryCurrencySymbolPromo.textContent = secondarySymbol;
   
   document.getElementById('secondaryCurrencyText').textContent = secondaryText;
   document.getElementById('secondaryCurrencyText2').textContent = secondaryText;
   const secondaryCurrencyTextMarket = document.getElementById('secondaryCurrencyTextMarket');
   if (secondaryCurrencyTextMarket) secondaryCurrencyTextMarket.textContent = secondaryText;
+  const secondaryCurrencyTextPromo = document.getElementById('secondaryCurrencyTextPromo');
+  if (secondaryCurrencyTextPromo) secondaryCurrencyTextPromo.textContent = secondaryText;
 
 
   document.getElementById('adsCount').textContent=cnt;
@@ -1801,6 +1911,9 @@ function applyTranslations(lang) {
         } else if (t[key]) {
             if(key !== 'copy' && key !== 'share' && !key.startsWith('taskReward')) {
                el.innerHTML = t[key];
+            }
+            if (key === 'enterCode') {
+               el.placeholder = t[key];
             }
         }
     });
@@ -2355,6 +2468,10 @@ function showPage(id, btn){
         return; 
     }
     updateMegaBoxState(); 
+  } else if (id === 'promoPage') {
+    promoInput.value = '';
+    promoMessage.textContent = '';
+    promoMessage.classList.remove('success', 'error');
   } else {
     let rewardMsgElement = document.getElementById('rewardMsg');
     if (rewardMsgElement) {
@@ -2408,16 +2525,16 @@ document.getElementById('withdrawBtn').onclick=()=>{
   
   if (currentLang === 'tr') {
       currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_TRY;
-      minAmount = 100;
+      minAmount = 5 * EXCHANGE_RATES.AZN_TO_TRY;
   } else if (currentLang === 'en') {
       currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_USD;
-      minAmount = 2.40;
+      minAmount = 5 * EXCHANGE_RATES.AZN_TO_USD;
   } else if (currentLang === 'ru') {
       currentBalanceInLang = bal * EXCHANGE_RATES.AZN_TO_RUB;
-      minAmount = 188;
+      minAmount = 5 * EXCHANGE_RATES.AZN_TO_RUB;
   } else { 
       currentBalanceInLang = bal;
-      minAmount = 4;
+      minAmount = 5;
   }
   
   const EPSILON = 0.0001; 
@@ -2462,6 +2579,70 @@ function showErr(msg){
   alertBox.className='alert error';
   alertBox.style.display='block';
 }
+
+const promoInput = document.getElementById('promoInput');
+const promoSubmitBtn = document.getElementById('promoSubmitBtn');
+const promoMessage = document.getElementById('promoMessage');
+
+promoSubmitBtn.onclick = () => {
+    const code = promoInput.value.trim().toUpperCase();
+    const t = TRANSLATIONS[currentLang];
+    
+    if (!code) {
+        promoMessage.textContent = t.invalidCode;
+        promoMessage.classList.add('error');
+        promoMessage.classList.remove('success');
+        return;
+    }
+    
+    let usedCodes = safeGet(USED_PROMO_CODES_KEY, []);
+    
+    if (usedCodes.includes(code)) {
+        promoMessage.textContent = t.codeUsed;
+        promoMessage.classList.add('error');
+        promoMessage.classList.remove('success');
+        return;
+    }
+    
+    let rewardAZN = 0;
+    let found = false;
+    
+    for (const [amount, codes] of Object.entries(PROMO_CODES)) {
+        if (codes.includes(code)) {
+            rewardAZN = parseFloat(amount);
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        promoMessage.textContent = t.invalidCode;
+        promoMessage.classList.add('error');
+        promoMessage.classList.remove('success');
+        return;
+    }
+    
+    bal += rewardAZN;
+    totalEarned += rewardAZN;
+    safeSet(BAL_KEY, bal);
+    safeSet(TOTAL_EARNED_KEY, totalEarned);
+    
+    usedCodes.push(code);
+    safeSet(USED_PROMO_CODES_KEY, usedCodes);
+    
+    const rewardInfo = localizeAmount(rewardAZN, currentLang);
+    const formattedReward = `${rewardInfo.formatted} ${rewardInfo.symbol}`;
+    
+    promoMessage.textContent = t.codeSuccess(formattedReward);
+    promoMessage.classList.add('success');
+    promoMessage.classList.remove('error');
+    
+    showTaskNotification(t.codeSuccess(formattedReward));
+    
+    update();
+    
+    promoInput.value = '';
+};
 
 update();
 applyTranslations(currentLang); 
